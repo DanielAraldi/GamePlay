@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
@@ -8,9 +9,9 @@ import {
   Rajdhani_700Bold,
 } from '@expo-google-fonts/rajdhani';
 
-import { SignIn } from './src/screens';
-import { Background } from './src/components';
+import { Routes } from './src/routes';
 import { theme } from './src/config';
+import { Background } from './src/components';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,13 +37,17 @@ export default function App() {
 
   return (
     <Background>
-      <StatusBar
-        barStyle='light-content'
-        backgroundColor={theme.colors.transparent}
-        translucent
-      />
+      <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <StatusBar
+            barStyle='light-content'
+            backgroundColor={theme.colors.transparent}
+            translucent
+          />
 
-      <SignIn />
+          <Routes />
+        </SafeAreaView>
+      </SafeAreaProvider>
     </Background>
   );
 }
