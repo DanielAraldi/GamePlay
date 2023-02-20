@@ -1,17 +1,17 @@
-import CALENDAR_SVG from '../assets/svgs/calendar.svg';
-import DISCORD_SVG from '../assets/svgs/discord.svg';
-import DUEL_SVG from '../assets/svgs/duel.svg';
-import FUN_SVG from '../assets/svgs/fun.svg';
-import PLAYER_SVG from '../assets/svgs/player.svg';
-import RANKED_SVG from '../assets/svgs/ranked.svg';
-import TRAINING_SVG from '../assets/svgs/training.svg';
+import CalendarSvg from '../assets/svgs/calendar.svg';
+import DiscordSvg from '../assets/svgs/discord.svg';
+import DuelSvg from '../assets/svgs/duel.svg';
+import FunSvg from '../assets/svgs/fun.svg';
+import PlayerSvg from '../assets/svgs/player.svg';
+import RankedSvg from '../assets/svgs/ranked.svg';
+import TrainingSvg from '../assets/svgs/training.svg';
 
 export {
-  CALENDAR_SVG,
-  DISCORD_SVG,
-  DUEL_SVG,
-  FUN_SVG,
-  PLAYER_SVG,
-  RANKED_SVG,
-  TRAINING_SVG,
+  CalendarSvg,
+  DiscordSvg,
+  DuelSvg,
+  FunSvg,
+  PlayerSvg,
+  RankedSvg,
+  TrainingSvg,
 };
