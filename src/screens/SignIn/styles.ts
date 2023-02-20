@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native';
 import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
-  constainer: {
+  container: {
     flex: 1,
 
     justifyContent: 'center',
     alignItems: 'center',
 
-    backgroundColor: theme.colors.background,
+    backgroundColor: theme.colors.secondary100,
   },
 
   image: {
@@ -27,8 +27,10 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
 
     fontSize: 40,
+    fontFamily: theme.fonts.title700,
 
     textAlign: 'center',
+    lineHeight: 40,
 
     color: theme.colors.heading,
   },
@@ -37,8 +39,10 @@ export const styles = StyleSheet.create({
     marginBottom: 64,
 
     fontSize: 15,
+    fontFamily: theme.fonts.title500,
 
     textAlign: 'center',
+    lineHeight: 25,
 
     color: theme.colors.heading,
   },

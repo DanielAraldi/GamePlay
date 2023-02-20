@@ -6,12 +6,12 @@ import { styles } from './styles';
 
 export function SignIn() {
   return (
-    <View style={styles.constainer}>
+    <View style={styles.container}>
       <Image source={ILLUSTRATION} style={styles.image} resizeMode='stretch' />
 
       <View style={styles.content}>
         <Text style={styles.title}>
-          Organize{'\n'}suas jogatinas{'\n'}facilmente
+          Conecte-se{'\n'}e organize suas{'\n'}jogatinas
         </Text>
 
         <Text style={styles.subtitle}>
