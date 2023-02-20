@@ -5,6 +5,7 @@ export const theme = {
     secondary100: '#0A1033',
     secondary90: '#0D133D',
     secondary80: '#0E1647',
+    secondary75: '#171F52',
     secondary70: '#1B2565',
     secondary60: '#243189',
     secondary50: '#1D2766',
@@ -15,6 +16,8 @@ export const theme = {
     heading: '#DDE3F0',
     line: '#991F36',
     on: '#32BD50',
+
+    discord: '#7289da',
 
     transparent: 'transparent',
   },
