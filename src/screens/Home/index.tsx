@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-import { Profile } from '../../components';
+import { ButtonAdd, Profile } from '../../components';
 import { styles } from './styles';
 
 export function Home() {
@@ -8,6 +8,8 @@ export function Home() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Profile />
+
+        <ButtonAdd activeOpacity={0.7} />
       </View>
     </View>
   );
