@@ -1,5 +1,6 @@
 import { TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { ButtonAddProps } from '../../@types';
 import { theme } from '../../config';
@@ -11,7 +12,7 @@ export function ButtonAdd(props: ButtonAddProps) {
       <MaterialCommunityIcons
         name='plus'
         color={theme.colors.heading}
-        size={24}
+        size={RFValue(24)}
       />
     </TouchableOpacity>
   );

@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { CategoryProps } from '../../@types';
 import { theme } from '../../config';
@@ -22,7 +23,7 @@ export function Category({
         <View style={[styles.content, { opacity: checked ? 1 : 0.4 }]}>
           <View style={checked ? styles.checked : styles.check} />
 
-          <Icon width={48} height={48} />
+          <Icon width={RFValue(48)} height={RFValue(48)} />
 
           <Text style={styles.title}>{title}</Text>
         </View>

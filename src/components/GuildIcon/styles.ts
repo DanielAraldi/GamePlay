@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export const styles = StyleSheet.create({
   image: {
-    width: 64,
-    height: 64,
+    width: RFValue(64),
+    height: RFValue(64),
 
-    marginRight: 20,
+    marginRight: RFValue(20),
 
     borderRadius: 8,
   },

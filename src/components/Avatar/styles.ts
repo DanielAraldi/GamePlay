@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export const styles = StyleSheet.create({
   container: {
-    width: 49,
-    height: 49,
+    width: RFValue(49),
+    height: RFValue(49),
 
     justifyContent: 'center',
     alignItems: 'center',
 
-    marginRight: 20,
+    marginRight: RFValue(20),
 
     borderRadius: 8,
   },
 
   avatar: {
-    width: 46,
-    height: 46,
+    width: RFValue(46),
+    height: RFValue(46),
 
     borderRadius: 8,
   },

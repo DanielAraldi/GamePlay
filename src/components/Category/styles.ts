@@ -1,27 +1,29 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+
 import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
   container: {
-    width: 104,
-    height: 120,
+    width: RFValue(104),
+    height: RFValue(120),
 
     justifyContent: 'center',
     alignItems: 'center',
 
-    marginRight: 8,
+    marginRight: RFValue(8),
 
     borderRadius: 8,
   },
 
   content: {
-    width: 100,
-    height: 116,
+    width: RFValue(100),
+    height: RFValue(116),
 
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    paddingVertical: 7,
+    paddingVertical: RFValue(7),
 
     backgroundColor: theme.colors.secondary40,
 
@@ -29,19 +31,19 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 15,
+    fontSize: RFValue(15),
     fontFamily: theme.fonts.title500,
 
     color: theme.colors.heading,
   },
 
   check: {
-    width: 12,
-    height: 12,
+    width: RFValue(12),
+    height: RFValue(12),
 
     alignSelf: 'flex-end',
 
-    marginRight: 7,
+    marginRight: RFValue(7),
 
     backgroundColor: theme.colors.secondary100,
 
@@ -51,12 +53,12 @@ export const styles = StyleSheet.create({
   },
 
   checked: {
-    width: 10,
-    height: 10,
+    width: RFValue(10),
+    height: RFValue(10),
 
     alignSelf: 'flex-end',
 
-    marginRight: 7,
+    marginRight: RFValue(7),
 
     backgroundColor: theme.colors.primary,
 

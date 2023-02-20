@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+
 import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
@@ -6,7 +8,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
 
     width: '100%',
-    height: 56,
+    height: RFValue(56),
 
     alignItems: 'center',
 
@@ -16,8 +18,8 @@ export const styles = StyleSheet.create({
   },
 
   iconWrapper: {
-    width: 56,
-    height: 56,
+    width: RFValue(56),
+    height: RFValue(56),
 
     justifyContent: 'center',
     alignItems: 'center',
@@ -27,14 +29,14 @@ export const styles = StyleSheet.create({
   },
 
   icon: {
-    width: 24,
-    height: 18,
+    width: RFValue(24),
+    height: RFValue(18),
   },
 
   title: {
     flex: 1,
 
-    fontSize: 15,
+    fontSize: RFValue(15),
 
     textAlign: 'center',
 

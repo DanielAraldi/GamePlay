@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { theme } from '../../config';
 
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
   user: {
     flexDirection: 'row',
 
-    marginRight: 20,
+    marginRight: RFValue(20),
   },
 
   message: {
@@ -28,14 +29,14 @@ export const styles = StyleSheet.create({
   },
 
   greeting: {
-    fontSize: 24,
+    fontSize: RFValue(24),
     fontFamily: theme.fonts.title500,
 
     color: theme.colors.heading,
   },
 
   username: {
-    fontSize: 24,
+    fontSize: RFValue(24),
     fontFamily: theme.fonts.title700,
 
     color: theme.colors.heading,

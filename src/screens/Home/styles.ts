@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,20 +13,20 @@ export const styles = StyleSheet.create({
 
     justifyContent: 'space-between',
 
-    marginTop: 10,
-    marginBottom: 42,
+    marginTop: RFValue(10),
+    marginBottom: RFValue(42),
 
-    paddingHorizontal: 24,
+    paddingHorizontal: RFValue(24),
   },
 
   content: {
     flex: 1,
 
-    marginTop: 42,
+    marginTop: RFValue(42),
   },
 
   matches: {
-    marginTop: 24,
-    marginLeft: 24,
+    marginTop: RFValue(24),
+    marginLeft: RFValue(24),
   },
 });

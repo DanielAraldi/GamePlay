@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { theme } from '../../config';
 
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
 
     alignSelf: 'flex-end',
 
-    marginVertical: 21,
+    marginVertical: RFValue(21),
 
     backgroundColor: theme.colors.secondary40,
   },

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { theme } from '../../config';
 
@@ -10,18 +11,18 @@ export const styles = StyleSheet.create({
 
     justifyContent: 'space-between',
 
-    paddingHorizontal: 24,
+    paddingHorizontal: RFValue(24),
   },
 
   title: {
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontFamily: theme.fonts.title700,
 
     color: theme.colors.heading,
   },
 
   subtitle: {
-    fontSize: 13,
+    fontSize: RFValue(13),
     fontFamily: theme.fonts.text400,
 
     color: theme.colors.highlight,

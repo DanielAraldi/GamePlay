@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+
 import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
@@ -21,24 +23,24 @@ export const styles = StyleSheet.create({
 
     justifyContent: 'space-between',
 
-    marginBottom: 12,
+    marginBottom: RFValue(12),
   },
 
   title: {
     flex: 1,
 
-    marginRight: 20,
+    marginRight: RFValue(20),
 
-    fontSize: 18,
+    fontSize: RFValue(18),
     fontFamily: theme.fonts.title700,
 
     color: theme.colors.heading,
   },
 
   category: {
-    marginRight: 24,
+    marginRight: RFValue(24),
 
-    fontSize: 13,
+    fontSize: RFValue(13),
     fontFamily: theme.fonts.text400,
 
     color: theme.colors.highlight,
@@ -65,19 +67,19 @@ export const styles = StyleSheet.create({
   },
 
   date: {
-    marginLeft: 7,
+    marginLeft: RFValue(7),
 
-    fontSize: 13,
+    fontSize: RFValue(13),
     fontFamily: theme.fonts.text500,
 
     color: theme.colors.heading,
   },
 
   player: {
-    marginRight: 24,
-    marginLeft: 7,
+    marginRight: RFValue(24),
+    marginLeft: RFValue(7),
 
-    fontSize: 13,
+    fontSize: RFValue(13),
     fontFamily: theme.fonts.text500,
   },
 });
