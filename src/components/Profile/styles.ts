@@ -4,13 +4,21 @@ import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
+
     flexDirection: 'row',
 
     alignItems: 'center',
   },
 
+  content: {
+    flex: 1,
+  },
+
   user: {
     flexDirection: 'row',
+
+    marginRight: 20,
   },
 
   message: {
@@ -20,8 +28,6 @@ export const styles = StyleSheet.create({
   },
 
   greeting: {
-    marginRight: 6,
-
     fontSize: 24,
     fontFamily: theme.fonts.title500,
 

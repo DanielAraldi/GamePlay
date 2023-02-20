@@ -8,11 +8,11 @@ export function Profile() {
     <View style={styles.container}>
       <Avatar urlImage='https://github.com/danielaraldi.png' />
 
-      <View>
+      <View style={styles.content}>
         <View style={styles.user}>
-          <Text style={styles.greeting}>Olá,</Text>
-
-          <Text style={styles.username}>Daniel</Text>
+          <Text style={styles.username}>
+            <Text style={styles.greeting}>Olá, </Text>Daniel
+          </Text>
         </View>
 
         <Text style={styles.message}>Hoje é dia de vitória</Text>
