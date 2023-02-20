@@ -55,6 +55,7 @@ export const styles = StyleSheet.create({
   },
 
   dateInfo: {
+    flex: 1,
     flexDirection: 'row',
 
     alignItems: 'center',
