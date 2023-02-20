@@ -8,8 +8,9 @@ import {
   Rajdhani_700Bold,
 } from '@expo-google-fonts/rajdhani';
 
-import { theme } from './src/config';
 import { SignIn } from './src/screens';
+import { Background } from './src/components';
+import { theme } from './src/config';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,7 +35,7 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <>
+    <Background>
       <StatusBar
         barStyle='light-content'
         backgroundColor={theme.colors.transparent}
@@ -42,6 +43,6 @@ export default function App() {
       />
 
       <SignIn />
-    </>
+    </Background>
   );
 }
