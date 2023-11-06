@@ -13,9 +13,16 @@ import {
 import { APPOINTMENTS } from '../../utils';
 import { AppointmentProps } from '../../@types';
 import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 export function Home() {
+  const navigation = useNavigation();
+
   const [category, setCategory] = useState<string>('');
+
+  function handleAppointmentDetails(): void {
+    navigation.navigate('AppointmentDetails' as never);
+  }
 
   function handleCategorySelect(categoryId: string): void {
     categoryId === category ? setCategory('') : setCategory(categoryId);
@@ -28,7 +35,11 @@ export function Home() {
 
   const renderItem = useCallback(
     ({ item }: RenderItem<AppointmentProps>) => (
-      <Appointment activeOpacity={0.7} {...item} />
+      <Appointment
+        activeOpacity={0.7}
+        onPress={handleAppointmentDetails}
+        {...item}
+      />
     ),
     [APPOINTMENTS]
   );
