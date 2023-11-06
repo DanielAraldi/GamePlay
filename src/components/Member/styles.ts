@@ -9,23 +9,33 @@ export const styles = StyleSheet.create({
 
     width: '100%',
 
-    justifyContent: 'space-between',
     alignItems: 'center',
+  },
 
-    paddingHorizontal: RFValue(24),
+  status: {
+    flexDirection: 'row',
+
+    alignItems: 'center',
+  },
+
+  bulletStatus: {
+    width: RFValue(8),
+    height: RFValue(8),
+
+    marginRight: RFValue(9),
+
+    borderRadius: RFValue(4),
   },
 
   title: {
     fontSize: RFValue(18),
     fontFamily: theme.fonts.title700,
-
     color: theme.colors.heading,
   },
 
-  subtitle: {
+  nameStatus: {
     fontSize: RFValue(13),
     fontFamily: theme.fonts.text400,
-
     color: theme.colors.highlight,
   },
 });
