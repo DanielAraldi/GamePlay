@@ -23,27 +23,26 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    paddingVertical: RFValue(7),
-
-    backgroundColor: theme.colors.secondary40,
+    paddingVertical: RFValue(20),
 
     borderRadius: 8,
   },
 
   title: {
     fontSize: RFValue(15),
-    fontFamily: theme.fonts.title500,
+    fontFamily: theme.fonts.title700,
 
     color: theme.colors.heading,
   },
 
   check: {
+    position: 'absolute',
+
+    top: RFValue(7),
+    right: RFValue(7),
+
     width: RFValue(12),
     height: RFValue(12),
-
-    alignSelf: 'flex-end',
-
-    marginRight: RFValue(7),
 
     backgroundColor: theme.colors.secondary100,
 
@@ -53,12 +52,13 @@ export const styles = StyleSheet.create({
   },
 
   checked: {
+    position: 'absolute',
+
+    top: RFValue(7),
+    right: RFValue(7),
+
     width: RFValue(10),
     height: RFValue(10),
-
-    alignSelf: 'flex-end',
-
-    marginRight: RFValue(7),
 
     backgroundColor: theme.colors.primary,
 

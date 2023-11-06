@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
 
-import { Category } from '../';
+import { Category } from '../Category';
 import { CategorySelectProps } from '../../@types';
 import { CATEGORIES } from '../../utils';
 
@@ -9,6 +9,7 @@ import { styles } from './styles';
 export function CategorySelect({
   categorySelected,
   onSelect,
+  hasCheckBox = false,
 }: CategorySelectProps) {
   return (
     <ScrollView
@@ -22,6 +23,7 @@ export function CategorySelect({
           key={id}
           checked={id === categorySelected}
           activeOpacity={0.7}
+          hasCheckBox={hasCheckBox}
           onPress={() => onSelect(id)}
           {...rest}
         />

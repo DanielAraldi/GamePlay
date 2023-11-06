@@ -3,6 +3,7 @@ import { FlatList, View } from 'react-native';
 
 import {
   Appointment,
+  Background,
   ButtonAdd,
   CategorySelect,
   ListDivider,
@@ -33,30 +34,32 @@ export function Home() {
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Profile />
+    <Background>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Profile />
 
-        <ButtonAdd activeOpacity={0.7} />
-      </View>
+          <ButtonAdd activeOpacity={0.7} />
+        </View>
 
-      <CategorySelect
-        categorySelected={category}
-        onSelect={handleCategorySelect}
-      />
-
-      <View style={styles.content}>
-        <ListHeader subtitle='Total 6' title='Partidas agendadas' />
-
-        <FlatList
-          data={APPOINTMENTS}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <ListDivider />}
+        <CategorySelect
+          categorySelected={category}
+          onSelect={handleCategorySelect}
         />
+
+        <View style={styles.content}>
+          <ListHeader subtitle='Total 6' title='Partidas agendadas' />
+
+          <FlatList
+            data={APPOINTMENTS}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            style={styles.matches}
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => <ListDivider />}
+          />
+        </View>
       </View>
-    </View>
+    </Background>
   );
 }

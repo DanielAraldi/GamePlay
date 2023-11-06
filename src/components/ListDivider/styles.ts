@@ -5,12 +5,13 @@ import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
   container: {
-    width: '80%',
+    width: '78%',
     height: 1,
 
     alignSelf: 'flex-end',
 
-    marginVertical: RFValue(21),
+    marginTop: 2,
+    marginVertical: RFValue(31),
 
     backgroundColor: theme.colors.secondary40,
   },

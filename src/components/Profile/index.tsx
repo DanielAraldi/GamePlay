@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import { Avatar } from '../';
+import { Avatar } from '../Avatar';
 
 import { styles } from './styles';
 
