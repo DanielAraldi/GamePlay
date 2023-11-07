@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     color: theme.colors.heading,
     textAlign: 'center',
 
-    backgroundColor: theme.colors.secondary40,
+    backgroundColor: theme.colors.secondary50,
 
     borderRadius: 8,
   },

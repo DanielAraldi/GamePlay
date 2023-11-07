@@ -5,13 +5,25 @@ import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
   container: {
-    width: '75%',
-    height: 1,
+    flex: 1,
 
-    alignSelf: 'flex-end',
+    marginTop: RFValue(100),
+  },
 
-    marginTop: 2,
-    marginVertical: RFValue(31),
+  overlay: {
+    flex: 1,
+
+    backgroundColor: theme.colors.overlay,
+  },
+
+  bar: {
+    width: RFValue(39),
+    height: 2,
+
+    alignSelf: 'center',
+
+    marginTop: RFValue(13),
+    marginBottom: RFValue(103),
 
     backgroundColor: theme.colors.secondary40,
   },

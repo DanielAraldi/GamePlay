@@ -31,24 +31,23 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
 
     width: '100%',
-    height: RFValue(68),
+    height: RFValue(64),
 
     alignItems: 'center',
 
     paddingRight: RFValue(25),
 
-    borderColor: theme.colors.secondary50,
+    borderColor: theme.colors.secondary60,
     borderWidth: 1,
     borderRadius: 8,
   },
 
   image: {
     width: RFValue(64),
-    height: RFValue(68),
+    height: RFValue(64),
 
-    backgroundColor: theme.colors.secondary50,
+    backgroundColor: theme.colors.secondary60,
 
-    borderWidth: 1,
     borderRadius: 8,
   },
 

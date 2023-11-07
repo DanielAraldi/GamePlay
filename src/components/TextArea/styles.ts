@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
 
     padding: RFValue(16),
 
-    backgroundColor: theme.colors.secondary40,
+    backgroundColor: theme.colors.secondary50,
 
     borderRadius: 8,
   },
