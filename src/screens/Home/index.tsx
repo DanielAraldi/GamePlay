@@ -24,6 +24,10 @@ export function Home() {
     navigation.navigate('AppointmentDetails' as never);
   }
 
+  function handleAppointmentCreate(): void {
+    navigation.navigate('AppointmentCreate' as never);
+  }
+
   function handleCategorySelect(categoryId: string): void {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   }
@@ -50,7 +54,7 @@ export function Home() {
         <View style={styles.header}>
           <Profile />
 
-          <ButtonAdd activeOpacity={0.7} />
+          <ButtonAdd activeOpacity={0.7} onPress={handleAppointmentCreate} />
         </View>
 
         <CategorySelect
