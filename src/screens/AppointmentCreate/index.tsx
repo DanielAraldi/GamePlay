@@ -8,6 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import {
   Header,
@@ -16,13 +17,31 @@ import {
   SmallInput,
   TextArea,
   Button,
+  ModalView,
 } from '../../components';
 import { theme } from '../../config';
+import { GuildProps } from '../../@types';
+import { Guilds } from '../Guilds';
+
 import { styles } from './styles';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 export function AppointmentCreate() {
   const [category, setCategory] = useState<string>('');
+  const [openGuildsModal, setOpenGuildsModal] = useState<boolean>(false);
+  const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+
+  function handleOpenGuilds(): void {
+    setOpenGuildsModal(true);
+  }
+
+  function handleCloseGuilds(): void {
+    setOpenGuildsModal(false);
+  }
+
+  function handleGuildSelect(guildSelect: GuildProps): void {
+    setGuild(guildSelect);
+    setOpenGuildsModal(false);
+  }
 
   function handleCategorySelect(categoryId: string): void {
     categoryId === category ? setCategory('') : setCategory(categoryId);
@@ -45,13 +64,14 @@ export function AppointmentCreate() {
         />
 
         <View style={styles.form}>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity activeOpacity={0.7} onPress={handleOpenGuilds}>
             <View style={styles.select}>
-              <GuildIcon />
-              {/* <View style={styles.image} /> */}
+              {guild?.icon ? <GuildIcon /> : <View style={styles.image} />}
 
               <View style={styles.selectBody}>
-                <Text style={styles.label}>Selecione um servidor</Text>
+                <Text style={styles.label}>
+                  {guild?.name ? guild.name : 'Selecione um servidor'}
+                </Text>
               </View>
 
               <Feather
@@ -106,6 +126,14 @@ export function AppointmentCreate() {
           </View>
         </View>
       </ScrollView>
+
+      <ModalView
+        visible={openGuildsModal}
+        onDismiss={handleCloseGuilds}
+        onRequestClose={handleCloseGuilds}
+      >
+        <Guilds handleGuildSelect={handleGuildSelect} />
+      </ModalView>
     </KeyboardAvoidingView>
   );
 }
