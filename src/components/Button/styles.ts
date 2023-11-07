@@ -17,22 +17,6 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
   },
 
-  iconWrapper: {
-    width: RFValue(56),
-    height: RFValue(56),
-
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    borderRightWidth: 1,
-    borderColor: theme.colors.line,
-  },
-
-  icon: {
-    width: RFValue(24),
-    height: RFValue(18),
-  },
-
   title: {
     flex: 1,
 
