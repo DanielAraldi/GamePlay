@@ -29,6 +29,8 @@ export const styles = StyleSheet.create({
   },
 
   title: {
+    marginTop: RFValue(15),
+
     fontSize: RFValue(15),
     fontFamily: theme.fonts.title700,
 
