@@ -50,8 +50,10 @@ export const styles = StyleSheet.create({
     width: RFValue(64),
     height: RFValue(64),
 
-    backgroundColor: theme.colors.secondary60,
+    backgroundColor: theme.colors.secondary50,
 
+    borderColor: theme.colors.secondary60,
+    borderWidth: 1,
     borderRadius: 8,
   },
 

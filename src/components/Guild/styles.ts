@@ -17,6 +17,8 @@ export const styles = StyleSheet.create({
     flex: 1,
 
     justifyContent: 'center',
+
+    marginLeft: RFValue(20),
   },
 
   title: {
@@ -28,8 +30,6 @@ export const styles = StyleSheet.create({
   },
 
   type: {
-    marginBottom: RFValue(12),
-
     fontFamily: theme.fonts.text400,
     fontSize: RFValue(13),
     color: theme.colors.highlight,
