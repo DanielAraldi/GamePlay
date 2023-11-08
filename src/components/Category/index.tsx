@@ -13,17 +13,17 @@ export function Category({
   checked = false,
   ...rest
 }: CategoryProps) {
-  const { secondary50, secondary70, secondary40 } = theme.colors;
+  const { secondary50, secondary60, secondary70 } = theme.colors;
 
   return (
     <TouchableOpacity {...rest}>
       <LinearGradient
         style={styles.container}
-        colors={[secondary50, secondary70]}
+        colors={[secondary60, secondary70]}
       >
         <LinearGradient
           style={[styles.content, { opacity: checked ? 1 : 0.5 }]}
-          colors={[checked ? secondary70 : secondary50, secondary40]}
+          colors={[checked ? secondary70 : secondary60, secondary50]}
         >
           {hasCheckBox && (
             <View style={checked ? styles.checked : styles.check} />

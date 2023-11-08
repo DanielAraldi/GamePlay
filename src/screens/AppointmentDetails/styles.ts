@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     fontSize: RFValue(13),
     fontFamily: theme.fonts.text400,
     color: theme.colors.heading,
+    lineHeight: RFValue(21),
   },
 
   members: {

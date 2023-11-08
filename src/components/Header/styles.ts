@@ -28,4 +28,8 @@ export const styles = StyleSheet.create({
 
     color: theme.colors.heading,
   },
+
+  empty: {
+    width: RFValue(24),
+  },
 });

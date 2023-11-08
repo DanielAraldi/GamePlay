@@ -12,7 +12,7 @@ import { styles } from './styles';
 export function Header({ title, action }: HeaderProps) {
   const navigation = useNavigation();
 
-  const { secondary100, secondary40, heading } = theme.colors;
+  const { secondary100, secondary50, heading } = theme.colors;
 
   function handleGoBack(): void {
     navigation.goBack();
@@ -21,7 +21,7 @@ export function Header({ title, action }: HeaderProps) {
   return (
     <LinearGradient
       style={styles.container}
-      colors={[secondary100, secondary40]}
+      colors={[secondary100, secondary50]}
     >
       <TouchableOpacity activeOpacity={0.7} onPress={handleGoBack}>
         <Feather name='arrow-left' size={RFValue(24)} color={heading} />
@@ -29,7 +29,7 @@ export function Header({ title, action }: HeaderProps) {
 
       <Text style={styles.title}>{title}</Text>
 
-      {action && <View>{action}</View>}
+      {action ? <View>{action}</View> : <View style={styles.empty} />}
     </LinearGradient>
   );
 }
