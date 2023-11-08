@@ -20,12 +20,14 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
   return (
     <View style={styles.container}>
       <FlatList
-        style={styles.guilds}
         data={GUILDS}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <ListDivider />}
+        ListHeaderComponent={() => <ListDivider isCentered />}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
+        style={styles.guilds}
+        contentContainerStyle={styles.internalList}
       />
     </View>
   );

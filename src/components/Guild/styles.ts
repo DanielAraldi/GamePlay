@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    marginBottom: RFValue(11),
+    marginBottom: RFValue(4),
 
     fontFamily: theme.fonts.title700,
     fontSize: RFValue(18),
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
 
   type: {
-    marginBottom: RFValue(24),
+    marginBottom: RFValue(12),
 
     fontFamily: theme.fonts.text400,
     fontSize: RFValue(13),

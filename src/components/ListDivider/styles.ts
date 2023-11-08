@@ -5,14 +5,20 @@ import { theme } from '../../config';
 
 export const styles = StyleSheet.create({
   container: {
-    width: '75%',
+    width: '78%',
     height: 1,
 
     alignSelf: 'flex-end',
 
-    marginTop: 2,
-    marginVertical: RFValue(31),
-
     backgroundColor: theme.colors.secondary40,
+  },
+
+  centered: {
+    marginVertical: RFValue(12),
+  },
+
+  normal: {
+    marginTop: RFValue(2),
+    marginBottom: RFValue(31),
   },
 });

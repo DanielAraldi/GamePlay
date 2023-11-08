@@ -7,6 +7,7 @@ export * from './ButtonIcon';
 export * from './Category';
 export * from './CategorySelect';
 export * from './Header';
+export * from './ListDivider';
 export * from './ListHeader';
 export * from './Member';
 export * from './ModalView';

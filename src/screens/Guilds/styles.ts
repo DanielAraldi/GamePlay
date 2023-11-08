@@ -13,4 +13,9 @@ export const styles = StyleSheet.create({
   guilds: {
     width: '100%',
   },
+
+  internalList: {
+    paddingTop: RFValue(103),
+    paddingBottom: RFValue(68),
+  },
 });
