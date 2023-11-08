@@ -20,6 +20,10 @@ export const styles = StyleSheet.create({
     color: theme.colors.heading,
   },
 
+  labelBottom: {
+    marginBottom: RFValue(12),
+  },
+
   form: {
     paddingHorizontal: RFValue(24),
     marginTop: RFValue(32),
