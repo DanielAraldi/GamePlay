@@ -17,6 +17,8 @@ export const styles = StyleSheet.create({
 
     backgroundColor: theme.colors.secondary50,
 
+    borderWidth: 1,
+    borderColor: theme.colors.secondary60,
     borderRadius: 8,
   },
 });

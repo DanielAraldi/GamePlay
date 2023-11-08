@@ -12,6 +12,8 @@ export const styles = StyleSheet.create({
 
     backgroundColor: theme.colors.secondary50,
 
+    borderWidth: 1,
+    borderColor: theme.colors.secondary60,
     borderRadius: 8,
   },
 
@@ -22,5 +24,7 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.text400,
     fontSize: RFValue(13),
     color: theme.colors.heading,
+
+    textAlignVertical: 'top',
   },
 });
