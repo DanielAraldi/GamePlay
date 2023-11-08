@@ -5,6 +5,7 @@ import { CalendarSvg, PlayerSvg, theme } from '../../config';
 import { AppointmentProps } from '../../@types';
 import { CATEGORIES } from '../../utils';
 import { styles } from './styles';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export function Appointment({
   guild,
@@ -14,12 +15,17 @@ export function Appointment({
 }: AppointmentProps) {
   const [categorySelected] = CATEGORIES.filter(({ id }) => id === category);
 
-  const { primary, on } = theme.colors;
+  const { primary, on, secondary60, secondary80 } = theme.colors;
 
   return (
     <TouchableOpacity {...rest}>
       <View style={styles.container}>
-        <GuildIcon />
+        <LinearGradient
+          style={styles.guildIconContainer}
+          colors={[secondary60, secondary80]}
+        >
+          <GuildIcon />
+        </LinearGradient>
 
         <View style={styles.content}>
           <View style={styles.header}>

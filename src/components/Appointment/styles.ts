@@ -16,6 +16,18 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
 
+  guildIconContainer: {
+    width: RFValue(64),
+    height: RFValue(68),
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    marginRight: RFValue(20),
+
+    borderRadius: 8,
+  },
+
   header: {
     flexDirection: 'row',
 

@@ -45,7 +45,7 @@ export function AppointmentCreate() {
   }
 
   function handleCategorySelect(categoryId: string): void {
-    categoryId === category ? setCategory('') : setCategory(categoryId);
+    if (category !== categoryId) setCategory(categoryId);
   }
 
   return (
