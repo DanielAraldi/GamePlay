@@ -50,31 +50,27 @@ export function Home() {
 
   return (
     <Background>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Profile />
+      <View style={styles.header}>
+        <Profile />
 
-          <ButtonAdd activeOpacity={0.7} onPress={handleAppointmentCreate} />
-        </View>
-
-        <CategorySelect
-          categorySelected={category}
-          onSelect={handleCategorySelect}
-        />
-
-        <View style={styles.content}>
-          <ListHeader subtitle='Total 6' title='Partidas agendadas' />
-
-          <FlatList
-            data={APPOINTMENTS}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
-            style={styles.matches}
-            showsVerticalScrollIndicator={false}
-            ItemSeparatorComponent={() => <ListDivider />}
-          />
-        </View>
+        <ButtonAdd activeOpacity={0.7} onPress={handleAppointmentCreate} />
       </View>
+
+      <CategorySelect
+        categorySelected={category}
+        onSelect={handleCategorySelect}
+      />
+
+      <ListHeader subtitle='Total 6' title='Partidas agendadas' />
+
+      <FlatList
+        data={APPOINTMENTS}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        style={styles.matches}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <ListDivider />}
+      />
     </Background>
   );
 }

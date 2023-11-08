@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
 
     marginTop: RFValue(13),
-    marginBottom: RFValue(103),
 
     backgroundColor: theme.colors.secondary40,
   },

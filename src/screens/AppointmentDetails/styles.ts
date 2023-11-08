@@ -8,8 +8,6 @@ export const styles = StyleSheet.create({
   banner: {
     width: '100%',
     height: RFValue(234),
-
-    marginBottom: 0,
   },
 
   bannerContent: {
@@ -37,6 +35,10 @@ export const styles = StyleSheet.create({
   members: {
     marginTop: RFValue(27),
     marginLeft: RFValue(24),
+  },
+
+  internalList: {
+    paddingBottom: RFValue(69),
   },
 
   footer: {

@@ -12,6 +12,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
 
+    marginTop: RFValue(27),
+
     paddingHorizontal: RFValue(24),
   },
 
