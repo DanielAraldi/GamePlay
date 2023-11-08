@@ -12,6 +12,7 @@ import {
 import { Routes } from './src/routes';
 import { theme } from './src/config';
 import { Background } from './src/components';
+import { AuthProvider } from './src/hooks';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -45,7 +46,9 @@ export default function App() {
             translucent
           />
 
-          <Routes />
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
         </SafeAreaView>
       </SafeAreaProvider>
     </Background>

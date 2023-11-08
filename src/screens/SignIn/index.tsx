@@ -3,9 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Background, ButtonIcon } from '../../components';
 import { ILLUSTRATION } from '../../config';
+import { useAuth } from '../../hooks';
+
 import { styles } from './styles';
 
 export function SignIn() {
+  const {} = useAuth();
   const navigation = useNavigation();
 
   function handleSignIn(): void {
