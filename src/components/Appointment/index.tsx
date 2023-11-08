@@ -36,12 +36,12 @@ export function Appointment({
             </View>
 
             <View style={styles.playersInfo}>
-              <PlayerSvg fill={guild.owner ? primary : on} />
+              <PlayerSvg fill={guild.isOwner ? primary : on} />
 
               <Text
-                style={[styles.player, { color: guild.owner ? primary : on }]}
+                style={[styles.player, { color: guild.isOwner ? primary : on }]}
               >
-                {guild.owner ? 'Anfitrião' : 'Visitante'}
+                {guild.isOwner ? 'Anfitrião' : 'Visitante'}
               </Text>
             </View>
           </View>

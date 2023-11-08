@@ -1,11 +1,6 @@
 import { TouchableOpacityProps } from 'react-native';
 
-interface GuildProps {
-  id: string;
-  name: string;
-  icon: string | null;
-  owner: boolean;
-}
+import { GuildProps } from './Guild';
 
 export interface AppointmentProps extends TouchableOpacityProps {
   id: string;
