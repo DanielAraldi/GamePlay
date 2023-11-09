@@ -1,3 +1,5 @@
+import { AuthSessionResult } from 'expo-auth-session';
+
 export interface UserProps {
   id: string;
   token: string;
@@ -9,4 +11,13 @@ export interface UserProps {
 
 export interface AuthContextData {
   user: UserProps;
+  isLoadingAuth: boolean;
+  setIsLoadingAuth(value: boolean): void;
+  signIn(): Promise<void>;
 }
+
+export type AuthResponse = AuthSessionResult & {
+  params: {
+    access_token: string;
+  };
+};

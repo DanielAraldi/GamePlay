@@ -1,4 +1,4 @@
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Background, ButtonIcon } from '../../components';
@@ -8,11 +8,20 @@ import { useAuth } from '../../hooks';
 import { styles } from './styles';
 
 export function SignIn() {
-  const {} = useAuth();
+  const { isLoadingAuth, setIsLoadingAuth, signIn } = useAuth();
   const navigation = useNavigation();
 
-  function handleSignIn(): void {
-    navigation.navigate('Home' as never);
+  async function handleSignIn(): Promise<void> {
+    try {
+      await signIn();
+      navigation.navigate('Home' as never);
+    } catch (error) {
+      Alert.alert(
+        'Falha na autenticação',
+        'Não foi possível autenticar, verifique sua conexão com a internet.'
+      );
+      setIsLoadingAuth(false);
+    }
   }
 
   return (
@@ -35,8 +44,8 @@ export function SignIn() {
 
           <ButtonIcon
             title='Entrar com Discord'
-            activeOpacity={0.7}
-            onPress={handleSignIn}
+            isLoading={isLoadingAuth}
+            onPress={async () => await handleSignIn()}
           />
         </View>
       </View>
