@@ -10,7 +10,7 @@ module.exports = function (api) {
           path: '.env',
           allowlist: ['REDIRECT_URI', 'SCOPE', 'CLIENT_ID'],
           safe: true,
-          allowUndefined: false,
+          allowUndefined: true,
           verbose: false,
         },
       ],
