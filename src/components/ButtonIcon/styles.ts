@@ -17,6 +17,10 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
   },
 
+  disabled: {
+    opacity: 0.7,
+  },
+
   iconWrapper: {
     width: RFValue(56),
     height: RFValue(56),
@@ -40,5 +44,9 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.text500,
     textAlign: 'center',
     color: theme.colors.heading,
+  },
+
+  loading: {
+    flex: 1,
   },
 });
