@@ -10,6 +10,12 @@ declare module '*.svg' {
   export default content;
 }
 
+declare module '@env' {
+  export const REDIRECT_URI: string;
+  export const SCOPE: string;
+  export const CLIENT_ID: string;
+}
+
 interface RenderItem<T> {
   item: T;
   index: number;
