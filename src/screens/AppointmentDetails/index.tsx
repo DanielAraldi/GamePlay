@@ -63,7 +63,7 @@ export function AppointmentDetails() {
         data={MEMBERS}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        ItemSeparatorComponent={() => <ListDivider />}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
         style={styles.members}
         contentContainerStyle={styles.internalList}
       />
