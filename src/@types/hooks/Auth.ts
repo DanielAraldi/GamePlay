@@ -12,6 +12,7 @@ export interface UserProps {
 export interface AuthContextData {
   user: UserProps;
   isLoadingAuth: boolean;
+  isLoadingUser: boolean;
   signIn(): Promise<void>;
   loadUserStorage(): Promise<void>;
 }

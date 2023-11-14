@@ -1,33 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { useAuth } from '../hooks';
 import { SignIn } from '../screens';
+import { api } from '../config';
 
 import { AppRoutes } from './app.routes';
 
 SplashScreen.preventAutoHideAsync();
 
 export function Routes() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { loadUserStorage, isLoadingUser } = useAuth();
 
-  const { user, loadUserStorage } = useAuth();
+  const isAuthorized = api.defaults.headers.authorization;
 
   useEffect(() => {
     async function loadAuthData(): Promise<void> {
-      setIsLoading(true);
       await loadUserStorage();
       await SplashScreen.hideAsync();
-      setIsLoading(false);
     }
 
     loadAuthData();
   }, []);
 
+  if (isLoadingUser) return null;
+
   return (
     <NavigationContainer>
-      {user?.id && !isLoading ? <AppRoutes /> : <SignIn />}
+      {isAuthorized ? <AppRoutes /> : <SignIn />}
     </NavigationContainer>
   );
 }
