@@ -21,9 +21,11 @@ export function Guild({
 
       <View style={styles.content}>
         <View>
-          <Text style={styles.title}>{name}</Text>
+          <Text numberOfLines={1} ellipsizeMode='tail' style={styles.title}>
+            {name}
+          </Text>
 
-          <Text style={styles.type}>
+          <Text numberOfLines={1} ellipsizeMode='tail' style={styles.type}>
             {isOwner ? 'Administrador' : 'Convidado'}
           </Text>
         </View>
