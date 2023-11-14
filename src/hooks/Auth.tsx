@@ -42,7 +42,7 @@ export function AuthProvider({ children }: Required<PropsWithChildren>) {
     setIsLoadingUser(true);
     const storage = await Storage.get<UserProps>('user');
     if (storage) {
-      api.defaults.headers.authorization = `Bearer ${storage.token}`;
+      api.defaults.headers.authorization = storage.token;
       setUser(storage);
     }
     setIsLoadingUser(false);
