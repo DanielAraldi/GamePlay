@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import {
@@ -14,8 +12,6 @@ import { theme } from './src/config';
 import { Background } from './src/components';
 import { AuthProvider } from './src/hooks';
 
-SplashScreen.preventAutoHideAsync();
-
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
@@ -23,16 +19,6 @@ export default function App() {
     Rajdhani_500Medium,
     Rajdhani_700Bold,
   });
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      async function hideSplashScreen(): Promise<void> {
-        await SplashScreen.hideAsync();
-      }
-
-      hideSplashScreen();
-    }
-  }, [fontsLoaded]);
 
   if (!fontsLoaded) return null;
 

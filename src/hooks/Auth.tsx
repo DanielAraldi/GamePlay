@@ -51,12 +51,10 @@ export function AuthProvider({ children }: Required<PropsWithChildren>) {
     }
   }
 
-  useEffect(() => {
-    loadUserStorage();
-  }, []);
-
   return (
-    <AuthContext.Provider value={{ user, isLoadingAuth, signIn }}>
+    <AuthContext.Provider
+      value={{ user, isLoadingAuth, signIn, loadUserStorage }}
+    >
       {children}
     </AuthContext.Provider>
   );

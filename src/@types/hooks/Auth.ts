@@ -13,6 +13,7 @@ export interface AuthContextData {
   user: UserProps;
   isLoadingAuth: boolean;
   signIn(): Promise<void>;
+  loadUserStorage(): Promise<void>;
 }
 
 export type AuthResponse = AuthSessionResult & {
