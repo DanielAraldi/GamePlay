@@ -5,7 +5,7 @@ import { theme } from '../config';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export function AuthRoutes() {
+export function AppRoutes() {
   return (
     <Navigator
       initialRouteName='SignIn'
