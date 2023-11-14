@@ -12,12 +12,12 @@ export interface UserProps {
 export interface AuthContextData {
   user: UserProps;
   isLoadingAuth: boolean;
-  setIsLoadingAuth(value: boolean): void;
   signIn(): Promise<void>;
 }
 
 export type AuthResponse = AuthSessionResult & {
   params: {
-    access_token: string;
+    access_token?: string;
+    error?: string;
   };
 };

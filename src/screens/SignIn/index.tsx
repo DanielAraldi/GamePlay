@@ -8,7 +8,7 @@ import { useAuth } from '../../hooks';
 import { styles } from './styles';
 
 export function SignIn() {
-  const { isLoadingAuth, setIsLoadingAuth, signIn } = useAuth();
+  const { isLoadingAuth, signIn } = useAuth();
   const navigation = useNavigation();
 
   async function handleSignIn(): Promise<void> {
@@ -20,7 +20,6 @@ export function SignIn() {
         'Falha na autenticação',
         'Não foi possível autenticar, verifique sua conexão com a internet.'
       );
-      setIsLoadingAuth(false);
     }
   }
 
