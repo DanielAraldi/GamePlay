@@ -7,6 +7,8 @@ import {
   View,
 } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import {
   Background,
@@ -16,13 +18,16 @@ import {
   ListDivider,
   ButtonIcon,
 } from '../../components';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { theme, BANNER } from '../../config';
-import { styles } from './styles';
 import { MEMBERS } from '../../utils';
-import { MemberProps } from '../../@types';
+import { HomeParams, MemberProps } from '../../@types';
+
+import { styles } from './styles';
 
 export function AppointmentDetails() {
+  const route = useRoute();
+  const { appointment } = route.params as HomeParams;
+
   const keyExtractor = useCallback((item: MemberProps) => item.id, [MEMBERS]);
 
   const renderItem = useCallback(
@@ -48,11 +53,11 @@ export function AppointmentDetails() {
       <ImageBackground source={BANNER} style={styles.banner}>
         <View style={styles.bannerContent}>
           <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>
-            Lendários
+            {appointment.guild.name}
           </Text>
 
           <Text style={styles.subtitle} numberOfLines={2} ellipsizeMode='tail'>
-            É hoje que vamos chegar ao challenger sem perder uma partida da md10
+            {appointment.description}
           </Text>
         </View>
       </ImageBackground>
@@ -63,8 +68,8 @@ export function AppointmentDetails() {
         data={MEMBERS}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        ItemSeparatorComponent={() => <ListDivider isCentered />}
         style={styles.members}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
         contentContainerStyle={styles.internalList}
       />
 

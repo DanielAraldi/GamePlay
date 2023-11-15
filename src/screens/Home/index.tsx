@@ -12,7 +12,7 @@ import {
   Profile,
   Load,
 } from '../../components';
-import { AppointmentProps } from '../../@types';
+import { AppointmentProps, HomeParams } from '../../@types';
 import { styles } from './styles';
 import { Storage } from '../../libs';
 
@@ -23,8 +23,12 @@ export function Home() {
   const [category, setCategory] = useState<string>('');
   const [appoitments, setAppointments] = useState<AppointmentProps[]>([]);
 
-  function handleAppointmentDetails(): void {
-    navigation.navigate('AppointmentDetails' as never);
+  function handleAppointmentDetails(appointment: AppointmentProps): void {
+    console.warn(appointment);
+    navigation.navigate(
+      'AppointmentDetails' as never,
+      { appointment } as never
+    );
   }
 
   function handleAppointmentCreate(): void {
@@ -44,7 +48,7 @@ export function Home() {
     ({ item }: RenderItem<AppointmentProps>) => (
       <Appointment
         activeOpacity={0.7}
-        onPress={handleAppointmentDetails}
+        onPress={() => handleAppointmentDetails(item)}
         {...item}
       />
     ),
