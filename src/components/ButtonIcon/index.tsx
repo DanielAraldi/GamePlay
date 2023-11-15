@@ -11,11 +11,16 @@ import { ButtonIconProps } from '../../@types';
 import { DISCORD, theme } from '../../config';
 import { styles } from './styles';
 
-export function ButtonIcon({ title, isLoading, ...rest }: ButtonIconProps) {
+export function ButtonIcon({
+  title,
+  isLoading,
+  disabled,
+  ...rest
+}: ButtonIconProps) {
   return (
     <TouchableOpacity
       style={[styles.container, isLoading && styles.disabled]}
-      disabled={isLoading}
+      disabled={isLoading || disabled}
       activeOpacity={0.7}
       {...rest}
     >

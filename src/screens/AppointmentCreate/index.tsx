@@ -6,8 +6,11 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
+import z from 'zod';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import {
@@ -20,16 +23,25 @@ import {
   ModalView,
   Background,
 } from '../../components';
+import { Storage, UUID, validate } from '../../libs';
 import { theme } from '../../config';
-import { GuildProps } from '../../@types';
+import { AppointmentProps, GuildProps } from '../../@types';
 import { Guilds } from '../Guilds';
 
 import { styles } from './styles';
 
 export function AppointmentCreate() {
+  const [minute, setMinute] = useState<string>('');
+  const [hour, setHour] = useState<string>('');
+  const [day, setDay] = useState<string>('');
+  const [month, setMonth] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const [category, setCategory] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [openGuildsModal, setOpenGuildsModal] = useState<boolean>(false);
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+
+  const navigation = useNavigation();
 
   function handleOpenGuilds(): void {
     setOpenGuildsModal(true);
@@ -46,6 +58,67 @@ export function AppointmentCreate() {
 
   function handleCategorySelect(categoryId: string): void {
     if (category !== categoryId) setCategory(categoryId);
+  }
+
+  function formatNumbersOfDate(value: string): string {
+    return value.length === 1 ? `0${value}` : value;
+  }
+
+  async function handleSave(): Promise<void> {
+    try {
+      setIsLoading(true);
+
+      if (!guild?.id) {
+        setIsLoading(false);
+        return Alert.alert(
+          'Servidor não selecionado!',
+          'Por favor, selecione um servidor para agendar uma jogatina!'
+        );
+      }
+
+      const formattedDay = formatNumbersOfDate(day);
+      const formattedMonth = formatNumbersOfDate(month);
+      const formattedHour = formatNumbersOfDate(hour);
+      const formattedMinute = formatNumbersOfDate(minute);
+      const year = new Date().getFullYear();
+
+      const newAppoitment: AppointmentProps = {
+        id: UUID.generate(),
+        guild,
+        category,
+        date: `${formattedDay}/${formattedMonth} às ${formattedHour}:${formattedMinute}h`,
+        description,
+      };
+
+      validate.isBlack(category);
+      validate.isBlack(description);
+
+      validate.isDate(
+        `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`
+      );
+
+      const storage = await Storage.get<AppointmentProps[]>('appointments');
+      const appointments = storage || [];
+
+      await Storage.set<AppointmentProps[]>('appointments', [
+        ...appointments,
+        newAppoitment,
+      ]);
+
+      navigation.goBack();
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const message = error.errors[0].message;
+        Alert.alert('Seus dados não estão coerentes!', message);
+      } else {
+        Alert.alert(
+          'Tivemos um probleminha ao salvar!',
+          'Certifique-se se os dados inseridos estão corretos e tente novamente!'
+        );
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -99,11 +172,15 @@ export function AppointmentCreate() {
                 </Text>
 
                 <View style={styles.column}>
-                  <SmallInput maxLength={2} />
+                  <SmallInput maxLength={2} value={day} onChangeText={setDay} />
 
                   <Text style={styles.divider}>/</Text>
 
-                  <SmallInput maxLength={2} />
+                  <SmallInput
+                    maxLength={2}
+                    value={month}
+                    onChangeText={setMonth}
+                  />
                 </View>
               </View>
 
@@ -113,11 +190,19 @@ export function AppointmentCreate() {
                 </Text>
 
                 <View style={styles.column}>
-                  <SmallInput maxLength={2} />
+                  <SmallInput
+                    maxLength={2}
+                    value={hour}
+                    onChangeText={setHour}
+                  />
 
                   <Text style={styles.divider}>:</Text>
 
-                  <SmallInput maxLength={2} />
+                  <SmallInput
+                    maxLength={2}
+                    value={minute}
+                    onChangeText={setMinute}
+                  />
                 </View>
               </View>
             </View>
@@ -129,14 +214,20 @@ export function AppointmentCreate() {
             </View>
 
             <TextArea
+              value={description}
               autoCorrect={false}
-              multiline
               numberOfLines={5}
               maxLength={100}
+              multiline
+              onChangeText={setDescription}
             />
 
             <View style={styles.footer}>
-              <Button title='Agendar' />
+              <Button
+                title='Agendar'
+                onPress={async () => await handleSave()}
+                isLoading={isLoading}
+              />
             </View>
           </View>
         </ScrollView>
