@@ -1,8 +1,8 @@
 import { ScrollView } from 'react-native';
 
-import { Category } from '../Category';
 import { CategorySelectProps } from '../../@types';
 import { CATEGORIES } from '../../utils';
+import { Category } from '../Category';
 
 import { styles } from './styles';
 

@@ -24,12 +24,14 @@ export function Appointment({
           style={styles.guildIconContainer}
           colors={[secondary60, secondary80]}
         >
-          <GuildIcon />
+          <GuildIcon guildId={guild.id} iconId={guild.icon} />
         </LinearGradient>
 
         <View style={styles.content}>
           <View style={styles.header}>
-            <Text style={styles.title}>{guild.name}</Text>
+            <Text numberOfLines={1} ellipsizeMode='tail' style={styles.title}>
+              {guild.name}
+            </Text>
 
             <Text style={styles.category}>{categorySelected.title}</Text>
           </View>

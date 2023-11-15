@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, View, TouchableWithoutFeedback } from 'react-native';
 
 import { ModalViewProps } from '../../@types';

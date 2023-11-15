@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import { theme } from '../../config';
+
 export const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
@@ -18,5 +20,15 @@ export const styles = StyleSheet.create({
   matches: {
     marginTop: RFValue(24),
     marginLeft: RFValue(24),
+  },
+
+  emptyListText: {
+    marginTop: RFValue(64),
+
+    textAlign: 'center',
+
+    fontFamily: theme.fonts.title700,
+    fontSize: RFValue(18),
+    color: theme.colors.heading,
   },
 });

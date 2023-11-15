@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { View, FlatList, Text, Alert } from 'react-native';
 
 import { GuildProps, GuildsProps } from '../../@types';

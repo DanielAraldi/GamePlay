@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import {
   Appointment,
@@ -9,16 +10,18 @@ import {
   ListDivider,
   ListHeader,
   Profile,
+  Load,
 } from '../../components';
-import { APPOINTMENTS } from '../../utils';
 import { AppointmentProps } from '../../@types';
 import { styles } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { Storage } from '../../libs';
 
 export function Home() {
   const navigation = useNavigation();
 
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [category, setCategory] = useState<string>('');
+  const [appoitments, setAppointments] = useState<AppointmentProps[]>([]);
 
   function handleAppointmentDetails(): void {
     navigation.navigate('AppointmentDetails' as never);
@@ -34,7 +37,7 @@ export function Home() {
 
   const keyExtractor = useCallback(
     (item: AppointmentProps) => item.id,
-    [APPOINTMENTS]
+    [appoitments]
   );
 
   const renderItem = useCallback(
@@ -45,7 +48,30 @@ export function Home() {
         {...item}
       />
     ),
-    [APPOINTMENTS]
+    [appoitments]
+  );
+
+  async function loadAppointments(): Promise<void> {
+    const storage = await Storage.get<AppointmentProps[]>('appointments');
+    const appoitmentStoraged = storage || [];
+
+    if (category) {
+      setAppointments(
+        appoitmentStoraged.filter(
+          appoitment => appoitment.category === category
+        )
+      );
+    } else {
+      setAppointments(appoitmentStoraged);
+    }
+
+    setIsLoading(false);
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      loadAppointments();
+    }, [category])
   );
 
   return (
@@ -61,16 +87,30 @@ export function Home() {
         onSelect={handleCategorySelect}
       />
 
-      <ListHeader subtitle='Total 6' title='Partidas agendadas' />
+      {isLoading ? (
+        <Load />
+      ) : (
+        <>
+          <ListHeader
+            subtitle={`Total ${appoitments.length}`}
+            title='Partidas agendadas'
+          />
 
-      <FlatList
-        data={APPOINTMENTS}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        style={styles.matches}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <ListDivider />}
-      />
+          <FlatList
+            data={appoitments}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            style={styles.matches}
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => <ListDivider />}
+            ListEmptyComponent={() => (
+              <Text style={styles.emptyListText}>
+                Você não possui nenhuma partida{'\n'}agendada no momento!
+              </Text>
+            )}
+          />
+        </>
+      )}
     </Background>
   );
 }

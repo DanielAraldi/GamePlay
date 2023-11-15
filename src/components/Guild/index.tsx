@@ -3,8 +3,8 @@ import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { GuildProps } from '../../@types';
-import { GuildIcon } from '../GuildIcon';
 import { theme } from '../../config';
+import { GuildIcon } from '../GuildIcon';
 
 import { styles } from './styles';
 

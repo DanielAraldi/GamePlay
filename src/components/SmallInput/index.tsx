@@ -1,4 +1,3 @@
-import React from 'react';
 import { TextInput } from 'react-native';
 
 import { SmallInputProps } from '../../@types';

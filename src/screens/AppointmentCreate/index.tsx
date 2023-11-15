@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Text,
   View,
@@ -215,9 +215,9 @@ export function AppointmentCreate() {
 
             <TextArea
               value={description}
-              autoCorrect={false}
               numberOfLines={5}
               maxLength={100}
+              autoCorrect
               multiline
               onChangeText={setDescription}
             />
