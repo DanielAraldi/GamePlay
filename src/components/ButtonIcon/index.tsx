@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { If, Then, Else } from 'react-if';
 
 import { ButtonIconProps } from '../../@types';
 import { DISCORD, theme } from '../../config';
@@ -28,15 +29,18 @@ export function ButtonIcon({
         <Image source={DISCORD} style={styles.icon} />
       </View>
 
-      {isLoading ? (
-        <ActivityIndicator
-          style={styles.loading}
-          color={theme.colors.heading}
-          size={RFValue(15)}
-        />
-      ) : (
-        <Text style={styles.title}>{title}</Text>
-      )}
+      <If condition={isLoading}>
+        <Then>
+          <ActivityIndicator
+            style={styles.loading}
+            color={theme.colors.heading}
+            size={RFValue(15)}
+          />
+        </Then>
+        <Else>
+          <Text style={styles.title}>{title}</Text>
+        </Else>
+      </If>
     </TouchableOpacity>
   );
 }

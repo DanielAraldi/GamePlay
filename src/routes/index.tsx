@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
+import { If, Then, Else } from 'react-if';
 
 import { useAuth } from '../hooks';
 import { SignIn } from '../screens';
@@ -28,7 +29,14 @@ export function Routes() {
 
   return (
     <NavigationContainer>
-      {isAuthorized ? <AppRoutes /> : <SignIn />}
+      <If condition={!!isAuthorized}>
+        <Then>
+          <AppRoutes />
+        </Then>
+        <Else>
+          <SignIn />
+        </Else>
+      </If>
     </NavigationContainer>
   );
 }

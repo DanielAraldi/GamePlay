@@ -3,6 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
+import { If, Then, Else } from 'react-if';
 
 import { HeaderProps } from '../../@types';
 import { theme } from '../../config';
@@ -28,7 +29,14 @@ export function Header({ title, action }: HeaderProps) {
 
       <Text style={styles.title}>{title}</Text>
 
-      {action ? <View>{action}</View> : <View style={styles.empty} />}
+      <If condition={!!action}>
+        <Then>
+          <View>{action}</View>
+        </Then>
+        <Else>
+          <View style={styles.empty} />
+        </Else>
+      </If>
     </LinearGradient>
   );
 }

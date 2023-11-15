@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { FlatList, View, Text } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { If, Then, Else } from 'react-if';
 
 import {
   Appointment,
@@ -92,10 +93,11 @@ export function Home() {
         onSelect={handleCategorySelect}
       />
 
-      {isLoading ? (
-        <Load />
-      ) : (
-        <>
+      <If condition={isLoading}>
+        <Then>
+          <Load />
+        </Then>
+        <Else>
           <ListHeader
             subtitle={`Total ${appoitments.length}`}
             title='Partidas agendadas'
@@ -114,8 +116,8 @@ export function Home() {
               </Text>
             )}
           />
-        </>
-      )}
+        </Else>
+      </If>
     </Background>
   );
 }

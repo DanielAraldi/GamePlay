@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useState } from 'react';
 import { View, FlatList, Text, Alert } from 'react-native';
+import { If, Then, Else } from 'react-if';
 
 import { GuildsProps } from '../../@types';
 import { Guild, ListDivider, Load } from '../../components';
@@ -48,27 +49,30 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
 
   return (
     <View style={styles.container}>
-      {isLoading ? (
-        <Load />
-      ) : (
-        <FlatList
-          data={guilds}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          showsVerticalScrollIndicator={false}
-          style={styles.guilds}
-          contentContainerStyle={styles.internalList}
-          ListHeaderComponent={() =>
-            guilds.length ? <ListDivider isCentered /> : null
-          }
-          ListEmptyComponent={() => (
-            <Text style={styles.emptyListText}>
-              Não há nenhum servidor{'\n'}disponível no momento!
-            </Text>
-          )}
-          ItemSeparatorComponent={() => <ListDivider isCentered />}
-        />
-      )}
+      <If condition={isLoading}>
+        <Then>
+          <Load />
+        </Then>
+        <Else>
+          <FlatList
+            data={guilds}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+            style={styles.guilds}
+            contentContainerStyle={styles.internalList}
+            ListHeaderComponent={() =>
+              guilds.length ? <ListDivider isCentered /> : null
+            }
+            ListEmptyComponent={() => (
+              <Text style={styles.emptyListText}>
+                Não há nenhum servidor{'\n'}disponível no momento!
+              </Text>
+            )}
+            ItemSeparatorComponent={() => <ListDivider isCentered />}
+          />
+        </Else>
+      </If>
     </View>
   );
 }

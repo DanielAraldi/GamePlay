@@ -1,5 +1,6 @@
 import { Image, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { If, Then, Else } from 'react-if';
 
 import { GuildIconProps } from '../../@types';
 import { CDN_IMAGE, DiscordSvg } from '../../config';
@@ -13,11 +14,18 @@ export function GuildIcon({ guildId, iconId }: GuildIconProps) {
 
   return (
     <View style={styles.container}>
-      {iconId ? (
-        <Image source={{ uri: URI }} style={styles.image} resizeMode='cover' />
-      ) : (
-        <DiscordSvg width={size} height={size} />
-      )}
+      <If condition={iconId}>
+        <Then>
+          <Image
+            source={{ uri: URI }}
+            style={styles.image}
+            resizeMode='cover'
+          />
+        </Then>
+        <Else>
+          <DiscordSvg width={size} height={size} />
+        </Else>
+      </If>
     </View>
   );
 }

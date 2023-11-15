@@ -12,6 +12,7 @@ import z from 'zod';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { If, Then, Else } from 'react-if';
 
 import {
   Header,
@@ -142,11 +143,14 @@ export function AppointmentCreate() {
           <View style={styles.form}>
             <TouchableOpacity activeOpacity={0.7} onPress={handleOpenGuilds}>
               <View style={styles.select}>
-                {guild?.icon ? (
-                  <GuildIcon guildId={guild?.id} iconId={guild?.icon} />
-                ) : (
-                  <View style={styles.image} />
-                )}
+                <If condition={guild?.icon}>
+                  <Then>
+                    <GuildIcon guildId={guild.id} iconId={guild.icon} />
+                  </Then>
+                  <Else>
+                    <View style={styles.image} />
+                  </Else>
+                </If>
 
                 <View style={styles.selectBody}>
                   <Text

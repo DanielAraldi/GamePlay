@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { When } from 'react-if';
 
 import { CategoryProps } from '../../@types';
 import { theme } from '../../config';
@@ -25,9 +26,9 @@ export function Category({
           style={[styles.content, { opacity: checked ? 1 : 0.5 }]}
           colors={[checked ? secondary70 : secondary60, secondary50]}
         >
-          {hasCheckBox && (
+          <When condition={hasCheckBox}>
             <View style={checked ? styles.checked : styles.check} />
-          )}
+          </When>
 
           <Icon width={RFValue(48)} height={RFValue(48)} />
 
