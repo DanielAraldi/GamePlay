@@ -68,10 +68,18 @@ export function AppointmentCreate() {
           <View style={styles.form}>
             <TouchableOpacity activeOpacity={0.7} onPress={handleOpenGuilds}>
               <View style={styles.select}>
-                {guild?.icon ? <GuildIcon /> : <View style={styles.image} />}
+                {guild?.icon ? (
+                  <GuildIcon guildId={guild?.id} iconId={guild?.icon} />
+                ) : (
+                  <View style={styles.image} />
+                )}
 
                 <View style={styles.selectBody}>
-                  <Text style={styles.label}>
+                  <Text
+                    numberOfLines={1}
+                    ellipsizeMode='tail'
+                    style={styles.label}
+                  >
                     {guild?.name ? guild.name : 'Selecione um servidor'}
                   </Text>
                 </View>
