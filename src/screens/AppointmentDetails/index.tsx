@@ -26,6 +26,7 @@ import { styles } from './styles';
 
 export function AppointmentDetails() {
   const route = useRoute();
+
   const { appointment } = route.params as HomeParams;
 
   const keyExtractor = useCallback((item: MemberProps) => item.id, [MEMBERS]);

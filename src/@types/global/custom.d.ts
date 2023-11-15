@@ -20,3 +20,18 @@ interface RenderItem<T> {
   item: T;
   index: number;
 }
+
+interface CustomGuildProps {
+  id: string;
+  name: string;
+  icon: string | null;
+  isOwner: boolean;
+}
+
+interface CustomAppointmentProps {
+  id: string;
+  guild: CustomGuildProps;
+  category: string;
+  date: string;
+  description: string;
+}

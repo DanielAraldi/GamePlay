@@ -1,10 +1,10 @@
-import { GuildProps, UserGuildProps } from '../@types';
+import { UserGuildProps } from '../@types';
 import { GuildServiceProps } from '../@types';
 
 import { api } from '../config';
 
 export const GuildService: GuildServiceProps = {
-  async getGuilds(): Promise<GuildProps[]> {
+  async getGuilds(): Promise<CustomGuildProps[]> {
     const { data } = await api.get<UserGuildProps[]>('/users/@me/guilds');
     return data.map(guild => ({
       id: guild.id,

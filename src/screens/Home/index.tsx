@@ -12,22 +12,23 @@ import {
   Profile,
   Load,
 } from '../../components';
-import { AppointmentProps, HomeParams } from '../../@types';
-import { styles } from './styles';
 import { Storage } from '../../libs';
+
+import { styles } from './styles';
 
 export function Home() {
   const navigation = useNavigation();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [category, setCategory] = useState<string>('');
-  const [appoitments, setAppointments] = useState<AppointmentProps[]>([]);
+  const [appoitments, setAppointments] = useState<CustomAppointmentProps[]>([]);
 
-  function handleAppointmentDetails(appointment: AppointmentProps): void {
-    console.warn(appointment);
+  function handleAppointmentDetails(
+    appointmentSelected: CustomAppointmentProps
+  ): void {
     navigation.navigate(
       'AppointmentDetails' as never,
-      { appointment } as never
+      { appointment: appointmentSelected } as never
     );
   }
 
@@ -39,24 +40,8 @@ export function Home() {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   }
 
-  const keyExtractor = useCallback(
-    (item: AppointmentProps) => item.id,
-    [appoitments]
-  );
-
-  const renderItem = useCallback(
-    ({ item }: RenderItem<AppointmentProps>) => (
-      <Appointment
-        activeOpacity={0.7}
-        onPress={() => handleAppointmentDetails(item)}
-        {...item}
-      />
-    ),
-    [appoitments]
-  );
-
   async function loadAppointments(): Promise<void> {
-    const storage = await Storage.get<AppointmentProps[]>('appointments');
+    const storage = await Storage.get<CustomAppointmentProps[]>('appointments');
     const appoitmentStoraged = storage || [];
 
     if (category) {
@@ -71,6 +56,22 @@ export function Home() {
 
     setIsLoading(false);
   }
+
+  const keyExtractor = useCallback(
+    (item: CustomAppointmentProps) => item.id,
+    [appoitments]
+  );
+
+  const renderItem = useCallback(
+    ({ item }: RenderItem<CustomAppointmentProps>) => (
+      <Appointment
+        activeOpacity={0.7}
+        onPress={() => handleAppointmentDetails(item)}
+        {...item}
+      />
+    ),
+    [appoitments]
+  );
 
   useFocusEffect(
     useCallback(() => {

@@ -1,11 +1,12 @@
 import { Text, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-import { GuildIcon } from '../GuildIcon';
 import { CalendarSvg, PlayerSvg, theme } from '../../config';
 import { AppointmentProps } from '../../@types';
 import { CATEGORIES } from '../../utils';
+import { GuildIcon } from '../GuildIcon';
+
 import { styles } from './styles';
-import { LinearGradient } from 'expo-linear-gradient';
 
 export function Appointment({
   guild,

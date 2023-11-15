@@ -25,12 +25,13 @@ import {
 } from '../../components';
 import { Storage, UUID, validate } from '../../libs';
 import { theme } from '../../config';
-import { AppointmentProps, GuildProps } from '../../@types';
 import { Guilds } from '../Guilds';
 
 import { styles } from './styles';
 
 export function AppointmentCreate() {
+  const navigation = useNavigation();
+
   const [minute, setMinute] = useState<string>('');
   const [hour, setHour] = useState<string>('');
   const [day, setDay] = useState<string>('');
@@ -39,9 +40,7 @@ export function AppointmentCreate() {
   const [category, setCategory] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [openGuildsModal, setOpenGuildsModal] = useState<boolean>(false);
-  const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
-
-  const navigation = useNavigation();
+  const [guild, setGuild] = useState<CustomGuildProps>({} as CustomGuildProps);
 
   function handleOpenGuilds(): void {
     setOpenGuildsModal(true);
@@ -51,7 +50,7 @@ export function AppointmentCreate() {
     setOpenGuildsModal(false);
   }
 
-  function handleGuildSelect(guildSelect: GuildProps): void {
+  function handleGuildSelect(guildSelect: CustomGuildProps): void {
     setGuild(guildSelect);
     setOpenGuildsModal(false);
   }
@@ -82,7 +81,7 @@ export function AppointmentCreate() {
       const formattedMinute = formatNumbersOfDate(minute);
       const year = new Date().getFullYear();
 
-      const newAppoitment: AppointmentProps = {
+      const newAppoitment: CustomAppointmentProps = {
         id: UUID.generate(),
         guild,
         category,
@@ -97,10 +96,12 @@ export function AppointmentCreate() {
         `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`
       );
 
-      const storage = await Storage.get<AppointmentProps[]>('appointments');
+      const storage = await Storage.get<CustomAppointmentProps[]>(
+        'appointments'
+      );
       const appointments = storage || [];
 
-      await Storage.set<AppointmentProps[]>('appointments', [
+      await Storage.set<CustomAppointmentProps[]>('appointments', [
         ...appointments,
         newAppoitment,
       ]);

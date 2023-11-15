@@ -8,8 +8,9 @@ import { useAuth } from '../../hooks';
 import { styles } from './styles';
 
 export function SignIn() {
-  const { isLoadingAuth, signIn } = useAuth();
   const navigation = useNavigation();
+
+  const { isLoadingAuth, signIn } = useAuth();
 
   async function handleSignIn(): Promise<void> {
     try {

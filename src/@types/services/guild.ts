@@ -1,7 +1,5 @@
-import { GuildProps } from '../components';
-
 export interface GuildServiceProps {
-  getGuilds(): Promise<GuildProps[]>;
+  getGuilds(): Promise<CustomGuildProps[]>;
 }
 
 export interface UserGuildProps {

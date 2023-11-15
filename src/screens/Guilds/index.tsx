@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useState } from 'react';
 import { View, FlatList, Text, Alert } from 'react-native';
 
-import { GuildProps, GuildsProps } from '../../@types';
+import { GuildsProps } from '../../@types';
 import { Guild, ListDivider, Load } from '../../components';
 import { GuildService } from '../../services';
 
@@ -9,16 +9,7 @@ import { styles } from './styles';
 
 export function Guilds({ handleGuildSelect }: GuildsProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [guilds, setGuilds] = useState<GuildProps[]>([]);
-
-  const keyExtractor = useCallback((item: GuildProps) => item.id, [guilds]);
-
-  const renderItem = useCallback(
-    ({ item }: RenderItem<GuildProps>) => (
-      <Guild {...item} onPress={() => handleGuildSelect(item)} />
-    ),
-    [guilds]
-  );
+  const [guilds, setGuilds] = useState<CustomGuildProps[]>([]);
 
   async function fetchGuilds(): Promise<void> {
     try {
@@ -34,6 +25,18 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
       setIsLoading(false);
     }
   }
+
+  const keyExtractor = useCallback(
+    (item: CustomGuildProps) => item.id,
+    [guilds]
+  );
+
+  const renderItem = useCallback(
+    ({ item }: RenderItem<CustomGuildProps>) => (
+      <Guild {...item} onPress={() => handleGuildSelect(item)} />
+    ),
+    [guilds]
+  );
 
   useEffect(() => {
     async function loadGuilds(): Promise<void> {
