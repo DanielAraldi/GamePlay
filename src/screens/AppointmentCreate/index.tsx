@@ -107,7 +107,7 @@ export function AppointmentCreate() {
         newAppoitment,
       ]);
 
-      navigation.goBack();
+      navigation.navigate('Home' as never);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const message = error.errors[0].message;

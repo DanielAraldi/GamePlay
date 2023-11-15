@@ -1,4 +1,4 @@
-import { UserGuildProps } from '../@types';
+import { UserGuildProps, UserGuildWidgetProps } from '../@types';
 import { GuildServiceProps } from '../@types';
 
 import { api } from '../config';
@@ -12,5 +12,12 @@ export const GuildService: GuildServiceProps = {
       isOwner: guild.owner,
       name: guild.name,
     }));
+  },
+
+  async getGuild(id: string): Promise<UserGuildWidgetProps> {
+    const { data } = await api.get<UserGuildWidgetProps>(
+      `/guilds/${id}/widget.json`
+    );
+    return data;
   },
 };

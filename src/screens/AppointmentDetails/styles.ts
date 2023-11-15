@@ -48,4 +48,14 @@ export const styles = StyleSheet.create({
     paddingHorizontal: RFValue(24),
     paddingVertical: RFValue(20),
   },
+
+  emptyListText: {
+    marginTop: RFValue(24),
+
+    textAlign: 'center',
+
+    fontFamily: theme.fonts.title700,
+    fontSize: RFValue(18),
+    color: theme.colors.heading,
+  },
 });

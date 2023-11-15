@@ -1,5 +1,8 @@
+import { MemberStatus } from '../components';
+
 export interface GuildServiceProps {
   getGuilds(): Promise<CustomGuildProps[]>;
+  getGuild(id: string): Promise<UserGuildWidgetProps>;
 }
 
 export interface UserGuildProps {
@@ -7,4 +10,18 @@ export interface UserGuildProps {
   name: string;
   icon: string | null;
   owner: boolean;
+}
+
+export interface UserGuildWidgetProps {
+  id: string;
+  name: string;
+  instant_invite: string;
+  members: UserWidgetMembersProps[];
+}
+
+export interface UserWidgetMembersProps {
+  id: string;
+  username: string;
+  avatar_url: string;
+  status: MemberStatus;
 }
