@@ -7,12 +7,12 @@ import {
   View,
   Alert,
   Share,
-  Platform,
 } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
+import * as Linking from 'expo-linking';
 import { useRoute } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { If, Then, Else } from 'react-if';
+import { If, Then, Else, When } from 'react-if';
 
 import {
   Background,
@@ -42,17 +42,22 @@ export function AppointmentDetails() {
     {} as UserGuildWidgetProps
   );
 
+  const url = widget?.instant_invite || '';
   const guildName = appointment.guild.name;
 
   function handleShare(): void {
-    const url = widget?.instant_invite || '';
-    const message = Platform.OS === 'ios' ? `Junte-se a ${guildName}!` : url;
+    const message = `Junte-se a ${guildName}! Acesso em: ${url}`;
 
     Share.share({
       message,
       url,
       title: 'Quer fazer parte do meu servidor?',
     });
+  }
+
+  async function handleOpenGuild(): Promise<void> {
+    const canOpenURL = await Linking.canOpenURL(url);
+    if (canOpenURL) await Linking.openURL(url);
   }
 
   async function fetchGuildWidget(): Promise<void> {
@@ -143,9 +148,14 @@ export function AppointmentDetails() {
             )}
           />
 
-          <View style={styles.footer}>
-            <ButtonIcon title='Entrar na partida' />
-          </View>
+          <When condition={url}>
+            <View style={styles.footer}>
+              <ButtonIcon
+                title='Entrar na partida'
+                onPress={async () => await handleOpenGuild()}
+              />
+            </View>
+          </When>
         </Else>
       </If>
     </Background>
