@@ -1,12 +1,23 @@
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+
+import { GuildIconProps } from '../../@types';
+import { CDN_IMAGE, DiscordSvg } from '../../config';
 
 import { styles } from './styles';
 
-export function GuildIcon() {
-  const URI =
-    'https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg';
+export function GuildIcon({ guildId, iconId }: GuildIconProps) {
+  const URI = `${CDN_IMAGE}/icons/${guildId}/${iconId}.png`;
+
+  const size = RFValue(40);
 
   return (
-    <Image source={{ uri: URI }} style={styles.image} resizeMode='cover' />
+    <View style={styles.container}>
+      {iconId ? (
+        <Image source={{ uri: URI }} style={styles.image} resizeMode='cover' />
+      ) : (
+        <DiscordSvg width={size} height={size} />
+      )}
+    </View>
   );
 }

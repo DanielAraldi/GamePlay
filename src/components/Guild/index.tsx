@@ -1,4 +1,3 @@
-import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -9,15 +8,10 @@ import { theme } from '../../config';
 
 import { styles } from './styles';
 
-export function Guild({
-  icon,
-  isOwner,
-  name,
-  ...rest
-}: Omit<GuildProps, 'id'>) {
+export function Guild({ id, icon, isOwner, name, ...rest }: GuildProps) {
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.7} {...rest}>
-      <GuildIcon />
+      <GuildIcon guildId={id} iconId={icon} />
 
       <View style={styles.content}>
         <View>

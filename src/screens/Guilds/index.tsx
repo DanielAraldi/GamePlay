@@ -53,6 +53,8 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           showsVerticalScrollIndicator={false}
+          style={styles.guilds}
+          contentContainerStyle={styles.internalList}
           ListHeaderComponent={() =>
             guilds.length ? <ListDivider isCentered /> : null
           }
@@ -62,8 +64,6 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
             </Text>
           )}
           ItemSeparatorComponent={() => <ListDivider isCentered />}
-          style={styles.guilds}
-          contentContainerStyle={styles.internalList}
         />
       )}
     </View>

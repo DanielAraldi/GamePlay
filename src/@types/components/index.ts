@@ -14,3 +14,4 @@ export * from './ModalView';
 export * from './SmallInput';
 export * from './TextArea';
 export * from './Guild';
+export * from './GuildIcon';
