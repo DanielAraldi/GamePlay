@@ -6,6 +6,7 @@ export * from './ButtonAdd';
 export * from './ButtonIcon';
 export * from './Category';
 export * from './CategorySelect';
+export * from './GenericButton';
 export * from './Header';
 export * from './ListDivider';
 export * from './ListHeader';

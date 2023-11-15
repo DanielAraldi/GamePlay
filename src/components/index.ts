@@ -6,6 +6,7 @@ export * from './ButtonAdd';
 export * from './ButtonIcon';
 export * from './Category';
 export * from './CategorySelect';
+export * from './GenericButton';
 export * from './Guild';
 export * from './GuildIcon';
 export * from './Header';

@@ -239,6 +239,7 @@ export function AppointmentCreate() {
       </Background>
 
       <ModalView
+        type='list'
         visible={openGuildsModal}
         onDismiss={handleCloseGuilds}
         onRequestClose={handleCloseGuilds}

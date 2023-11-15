@@ -38,6 +38,12 @@ export function AuthProvider({ children }: Required<PropsWithChildren>) {
     }
   }
 
+  async function signOut(): Promise<void> {
+    setUser({} as UserProps);
+    api.defaults.headers.authorization = null;
+    await Storage.clear();
+  }
+
   async function loadUserStorage(): Promise<void> {
     setIsLoadingUser(true);
     const storage = await Storage.get<UserProps>('user');
@@ -50,7 +56,14 @@ export function AuthProvider({ children }: Required<PropsWithChildren>) {
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoadingAuth, isLoadingUser, signIn, loadUserStorage }}
+      value={{
+        user,
+        isLoadingAuth,
+        isLoadingUser,
+        signIn,
+        signOut,
+        loadUserStorage,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -41,4 +41,38 @@ export const styles = StyleSheet.create({
 
     color: theme.colors.heading,
   },
+
+  logoutContainer: {
+    paddingTop: RFValue(24),
+    paddingHorizontal: RFValue(24),
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  defaultLogoutText: {
+    marginBottom: RFValue(24),
+
+    fontSize: RFValue(24),
+    fontFamily: theme.fonts.title500,
+
+    color: theme.colors.heading,
+  },
+
+  highlightText: {
+    fontFamily: theme.fonts.title700,
+  },
+
+  highlightPlayText: {
+    color: theme.colors.primary,
+  },
+
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+
+  gap: {
+    width: RFValue(8),
+  },
 });

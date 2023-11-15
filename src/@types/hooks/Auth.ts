@@ -14,6 +14,7 @@ export interface AuthContextData {
   isLoadingAuth: boolean;
   isLoadingUser: boolean;
   signIn(): Promise<void>;
+  signOut(): Promise<void>;
   loadUserStorage(): Promise<void>;
 }
 
