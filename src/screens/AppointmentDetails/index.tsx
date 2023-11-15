@@ -6,6 +6,8 @@ import {
   Text,
   View,
   Alert,
+  Share,
+  Platform,
 } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
@@ -39,6 +41,19 @@ export function AppointmentDetails() {
   const [widget, setWidget] = useState<UserGuildWidgetProps>(
     {} as UserGuildWidgetProps
   );
+
+  const guildName = appointment.guild.name;
+
+  function handleShare(): void {
+    const url = widget?.instant_invite || '';
+    const message = Platform.OS === 'ios' ? `Junte-se a ${guildName}!` : url;
+
+    Share.share({
+      message,
+      url,
+      title: 'Quer fazer parte do meu servidor?',
+    });
+  }
 
   async function fetchGuildWidget(): Promise<void> {
     try {
@@ -80,20 +95,22 @@ export function AppointmentDetails() {
       <Header
         title='Detalhes'
         action={
-          <TouchableOpacity activeOpacity={0.7}>
-            <Fontisto
-              name='share'
-              size={RFValue(24)}
-              color={theme.colors.primary}
-            />
-          </TouchableOpacity>
+          widget?.instant_invite && (
+            <TouchableOpacity activeOpacity={0.7} onPress={handleShare}>
+              <Fontisto
+                name='share'
+                size={RFValue(24)}
+                color={theme.colors.primary}
+              />
+            </TouchableOpacity>
+          )
         }
       />
 
       <ImageBackground source={BANNER} style={styles.banner}>
         <View style={styles.bannerContent}>
           <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>
-            {appointment.guild.name}
+            {guildName}
           </Text>
 
           <Text style={styles.subtitle} numberOfLines={2} ellipsizeMode='tail'>

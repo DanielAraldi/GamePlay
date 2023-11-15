@@ -15,7 +15,7 @@ export interface UserGuildProps {
 export interface UserGuildWidgetProps {
   id: string;
   name: string;
-  instant_invite: string;
+  instant_invite: string | null;
   members: UserWidgetMembersProps[];
 }
 
