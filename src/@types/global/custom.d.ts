@@ -35,5 +35,4 @@ interface CustomAppointmentProps {
   date: string;
   description: string;
   expiredIn: number;
-  notificationId: string;
 }

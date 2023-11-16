@@ -95,7 +95,7 @@ export function AppointmentCreate() {
         appointmentDate.setDate(expireOfDay),
       ).getTime();
 
-      const notificationId = await Notifications.scheduleNotificationAsync({
+      await Notifications.scheduleNotificationAsync({
         content: {
           title: 'Hora de jogar! 🥷',
           body: `Hora de se juntar ao servidor ${guild.name}!`,
@@ -116,7 +116,6 @@ export function AppointmentCreate() {
         date: `${formattedDay}/${formattedMonth} às ${formattedHour}:${formattedMinute}h`,
         description,
         expiredIn,
-        notificationId,
       };
 
       const storage =
