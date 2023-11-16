@@ -1,10 +1,9 @@
+import { Else, If, Then } from 'react-if';
 import { Image, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { If, Then, Else } from 'react-if';
 
 import { GuildIconProps } from '../../@types';
 import { CDN_IMAGE, DiscordSvg } from '../../config';
-
 import { styles } from './styles';
 
 export function GuildIcon({ guildId, iconId }: GuildIconProps) {

@@ -5,7 +5,6 @@ import { useAuth } from '../../hooks';
 import { Avatar } from '../Avatar';
 import { GenericButton } from '../GenericButton';
 import { ModalView } from '../ModalView';
-
 import { styles } from './styles';
 
 export function Profile() {

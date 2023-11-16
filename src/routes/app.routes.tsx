@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { AppointmentCreate, AppointmentDetails, Home } from '../screens';
 import { theme } from '../config';
+import { AppointmentCreate, AppointmentDetails, Home } from '../screens';
 
 const { Navigator, Screen } = createStackNavigator();
 

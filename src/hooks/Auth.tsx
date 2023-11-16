@@ -1,10 +1,10 @@
-import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { startAsync } from 'expo-auth-session';
+import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 import { AuthContextData, AuthResponse, UserProps } from '../@types';
 import { api, DISCORD_URL, env, RESPONSE_TYPE } from '../config';
-import { AuthService } from '../services';
 import { Storage } from '../libs';
+import { AuthService } from '../services';
 
 const AuthContext = createContext({} as AuthContextData);
 

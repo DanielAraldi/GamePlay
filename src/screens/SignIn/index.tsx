@@ -1,10 +1,9 @@
-import { Text, View, Image, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Alert, Image, Text, View } from 'react-native';
 
 import { Background, ButtonIcon } from '../../components';
 import { ILLUSTRATION } from '../../config';
 import { useAuth } from '../../hooks';
-
 import { styles } from './styles';
 
 export function SignIn() {
@@ -19,7 +18,7 @@ export function SignIn() {
     } catch (error) {
       Alert.alert(
         'Falha na autenticação',
-        'Não foi possível autenticar, verifique sua conexão com a internet.'
+        'Não foi possível autenticar, verifique sua conexão com a internet.',
       );
     }
   }

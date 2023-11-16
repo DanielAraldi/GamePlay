@@ -1,7 +1,6 @@
 import { View } from 'react-native';
 
 import { ListDividerProps } from '../../@types';
-
 import { styles } from './styles';
 
 export function ListDivider({ isCentered }: ListDividerProps) {

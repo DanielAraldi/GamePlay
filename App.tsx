@@ -1,16 +1,16 @@
-import { StatusBar } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import {
   Rajdhani_500Medium,
   Rajdhani_700Bold,
 } from '@expo-google-fonts/rajdhani';
+import { useFonts } from 'expo-font';
+import { StatusBar } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import { Routes } from './src/routes';
-import { theme } from './src/config';
 import { Background } from './src/components';
+import { theme } from './src/config';
 import { AuthProvider } from './src/hooks';
+import { Routes } from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

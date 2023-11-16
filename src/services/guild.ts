@@ -1,6 +1,5 @@
 import { UserGuildProps, UserGuildWidgetProps } from '../@types';
 import { GuildServiceProps } from '../@types';
-
 import { api } from '../config';
 
 export const GuildService: GuildServiceProps = {
@@ -16,7 +15,7 @@ export const GuildService: GuildServiceProps = {
 
   async getGuild(id: string): Promise<UserGuildWidgetProps> {
     const { data } = await api.get<UserGuildWidgetProps>(
-      `/guilds/${id}/widget.json`
+      `/guilds/${id}/widget.json`,
     );
     return data;
   },

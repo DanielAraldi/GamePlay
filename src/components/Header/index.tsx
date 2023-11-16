@@ -1,9 +1,9 @@
-import { TouchableOpacity, Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
-import { If, Then, Else } from 'react-if';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Else, If, Then } from 'react-if';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { HeaderProps } from '../../@types';
 import { theme } from '../../config';

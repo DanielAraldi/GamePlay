@@ -1,7 +1,6 @@
 import { TextInput, View } from 'react-native';
 
 import { TextAreaProps } from '../../@types';
-
 import { styles } from './styles';
 
 export function TextArea(props: TextAreaProps) {

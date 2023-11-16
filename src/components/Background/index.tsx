@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { theme } from '../../config';
 import { BackgroundProps } from '../../@types';
+import { theme } from '../../config';
 import { styles } from './styles';
 
 export function Background({ children }: BackgroundProps) {
