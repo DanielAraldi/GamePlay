@@ -41,7 +41,7 @@ export function Home() {
   }
 
   async function loadAppointments(): Promise<void> {
-    const storage = await Storage.get<CustomAppointmentProps[]>('appointments');
+    const storage = await Storage.getAvailableAppointments();
     const appoitmentStoraged = storage || [];
 
     if (category) {

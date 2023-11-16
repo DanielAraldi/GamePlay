@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import { AppointmentProps } from '../../@types';
 import { CalendarSvg, PlayerSvg, theme } from '../../config';
-import { CATEGORIES } from '../../utils';
+import { CATEGORIES } from '../../constants';
 import { GuildIcon } from '../GuildIcon';
 import { styles } from './styles';
 

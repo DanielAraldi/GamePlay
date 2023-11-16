@@ -25,6 +25,7 @@ import {
   TextArea,
 } from '../../components';
 import { theme } from '../../config';
+import { DateHelper } from '../../helpers';
 import { Storage, UUID, validate } from '../../libs';
 import { Guilds } from '../Guilds';
 import { styles } from './styles';
@@ -59,10 +60,6 @@ export function AppointmentCreate() {
     if (category !== categoryId) setCategory(categoryId);
   }
 
-  function formatNumbersOfDate(value: string): string {
-    return value.length === 1 ? `0${value}` : value;
-  }
-
   async function handleSave(): Promise<void> {
     try {
       setIsLoading(true);
@@ -75,11 +72,25 @@ export function AppointmentCreate() {
         );
       }
 
+      const { formatNumbersOfDate, getCurrentDate } = DateHelper;
       const formattedDay = formatNumbersOfDate(day);
       const formattedMonth = formatNumbersOfDate(month);
       const formattedHour = formatNumbersOfDate(hour);
       const formattedMinute = formatNumbersOfDate(minute);
-      const year = new Date().getFullYear();
+      const year = getCurrentDate().getFullYear();
+
+      const appointmentDate = new Date(
+        `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`,
+      );
+
+      validate.isDate(appointmentDate.toISOString());
+      validate.isBlack(category);
+      validate.isBlack(description);
+
+      const expireOfDay = appointmentDate.getDate() + 1;
+      const expiredIn = new Date(
+        appointmentDate.setDate(expireOfDay),
+      ).getTime();
 
       const newAppoitment: CustomAppointmentProps = {
         id: UUID.generate(),
@@ -87,14 +98,8 @@ export function AppointmentCreate() {
         category,
         date: `${formattedDay}/${formattedMonth} às ${formattedHour}:${formattedMinute}h`,
         description,
+        expiredIn,
       };
-
-      validate.isBlack(category);
-      validate.isBlack(description);
-
-      validate.isDate(
-        `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`,
-      );
 
       const storage =
         await Storage.get<CustomAppointmentProps[]>('appointments');
