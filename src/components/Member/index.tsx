@@ -1,9 +1,8 @@
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { Avatar } from '../Avatar';
-import { theme } from '../../config';
 import { MemberProps } from '../../@types';
-
+import { theme } from '../../config';
+import { Avatar } from '../Avatar';
 import { styles } from './styles';
 
 export function Member({

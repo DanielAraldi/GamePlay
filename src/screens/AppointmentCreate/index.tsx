@@ -1,33 +1,33 @@
-import { useState } from 'react';
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
-} from 'react-native';
-import z from 'zod';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { Else, If, Then } from 'react-if';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { If, Then, Else } from 'react-if';
+import z from 'zod';
 
 import {
-  Header,
+  Background,
+  Button,
   CategorySelect,
   GuildIcon,
+  Header,
+  ModalView,
   SmallInput,
   TextArea,
-  Button,
-  ModalView,
-  Background,
 } from '../../components';
-import { Storage, UUID, validate } from '../../libs';
 import { theme } from '../../config';
+import { DateHelper } from '../../helpers';
+import { Storage, UUID, validate } from '../../libs';
 import { Guilds } from '../Guilds';
-
 import { styles } from './styles';
 
 export function AppointmentCreate() {
@@ -60,10 +60,6 @@ export function AppointmentCreate() {
     if (category !== categoryId) setCategory(categoryId);
   }
 
-  function formatNumbersOfDate(value: string): string {
-    return value.length === 1 ? `0${value}` : value;
-  }
-
   async function handleSave(): Promise<void> {
     try {
       setIsLoading(true);
@@ -72,15 +68,29 @@ export function AppointmentCreate() {
         setIsLoading(false);
         return Alert.alert(
           'Servidor não selecionado!',
-          'Por favor, selecione um servidor para agendar uma jogatina!'
+          'Por favor, selecione um servidor para agendar uma jogatina!',
         );
       }
 
+      const { formatNumbersOfDate, getCurrentDate } = DateHelper;
       const formattedDay = formatNumbersOfDate(day);
       const formattedMonth = formatNumbersOfDate(month);
       const formattedHour = formatNumbersOfDate(hour);
       const formattedMinute = formatNumbersOfDate(minute);
-      const year = new Date().getFullYear();
+      const year = getCurrentDate().getFullYear();
+
+      const appointmentDate = new Date(
+        `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`,
+      );
+
+      validate.isDate(appointmentDate.toISOString());
+      validate.isBlack(category);
+      validate.isBlack(description);
+
+      const expireOfDay = appointmentDate.getDate() + 1;
+      const expiredIn = new Date(
+        appointmentDate.setDate(expireOfDay),
+      ).getTime();
 
       const newAppoitment: CustomAppointmentProps = {
         id: UUID.generate(),
@@ -88,18 +98,11 @@ export function AppointmentCreate() {
         category,
         date: `${formattedDay}/${formattedMonth} às ${formattedHour}:${formattedMinute}h`,
         description,
+        expiredIn,
       };
 
-      validate.isBlack(category);
-      validate.isBlack(description);
-
-      validate.isDate(
-        `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`
-      );
-
-      const storage = await Storage.get<CustomAppointmentProps[]>(
-        'appointments'
-      );
+      const storage =
+        await Storage.get<CustomAppointmentProps[]>('appointments');
       const appointments = storage || [];
 
       await Storage.set<CustomAppointmentProps[]>('appointments', [
@@ -115,7 +118,7 @@ export function AppointmentCreate() {
       } else {
         Alert.alert(
           'Tivemos um probleminha ao salvar!',
-          'Certifique-se se os dados inseridos estão corretos e tente novamente!'
+          'Certifique-se se os dados inseridos estão corretos e tente novamente!',
         );
       }
     } finally {

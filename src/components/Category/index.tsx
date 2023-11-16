@@ -1,7 +1,7 @@
-import { Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { When } from 'react-if';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { CategoryProps } from '../../@types';
 import { theme } from '../../config';

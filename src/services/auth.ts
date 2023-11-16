@@ -1,4 +1,4 @@
-import { AuthServiceProps, UserProps, UserAuthProps } from '../@types';
+import { AuthServiceProps, UserAuthProps, UserProps } from '../@types';
 import { api, CDN_IMAGE } from '../config';
 
 export const AuthService: AuthServiceProps = {

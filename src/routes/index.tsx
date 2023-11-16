@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
-import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
-import { If, Then, Else } from 'react-if';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import { Else, If, Then } from 'react-if';
 
+import { api } from '../config';
 import { useAuth } from '../hooks';
 import { SignIn } from '../screens';
-import { api } from '../config';
-
 import { AppRoutes } from './app.routes';
 
 SplashScreen.preventAutoHideAsync();

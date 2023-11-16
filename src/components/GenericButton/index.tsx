@@ -1,13 +1,12 @@
 import {
-  TouchableOpacity,
-  Text,
   StyleProp,
-  ViewStyle,
+  Text,
+  TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 
 import { GenericButtonProps } from '../../@types';
-
 import { styles } from './styles';
 
 export function GenericButton({

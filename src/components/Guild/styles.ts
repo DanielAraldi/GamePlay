@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+
 import { theme } from '../../config';
 
 export const styles = StyleSheet.create({

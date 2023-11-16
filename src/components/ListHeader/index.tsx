@@ -1,7 +1,6 @@
 import { Text, View } from 'react-native';
 
 import { ListHeaderProps } from '../../@types';
-
 import { styles } from './styles';
 
 export function ListHeader({ subtitle, title }: ListHeaderProps) {

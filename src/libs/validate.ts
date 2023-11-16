@@ -1,6 +1,7 @@
 import z from 'zod';
 
 import { ValidateProps } from '../@types';
+import { DateHelper } from '../helpers';
 
 export const validate: ValidateProps = {
   isBlack(value: string): boolean {
@@ -14,9 +15,7 @@ export const validate: ValidateProps = {
   },
 
   isDate(value: string): boolean {
-    const currentDate = new Date();
-    const currentPtBrHours = currentDate.getHours() - 3;
-    const minimumDate = new Date(currentDate.setHours(currentPtBrHours));
+    const currentDate = DateHelper.getCurrentDate();
 
     const schema = z
       .date({
@@ -36,7 +35,7 @@ export const validate: ValidateProps = {
           }
         },
       })
-      .min(minimumDate, {
+      .min(currentDate, {
         message: 'Uma data do passado não é válida!',
       });
 

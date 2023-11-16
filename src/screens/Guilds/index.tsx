@@ -1,11 +1,10 @@
-import { useEffect, useCallback, useState } from 'react';
-import { View, FlatList, Text, Alert } from 'react-native';
-import { If, Then, Else } from 'react-if';
+import { useCallback, useEffect, useState } from 'react';
+import { Else, If, Then } from 'react-if';
+import { Alert, FlatList, Text, View } from 'react-native';
 
 import { GuildsProps } from '../../@types';
 import { Guild, ListDivider, Load } from '../../components';
 import { GuildService } from '../../services';
-
 import { styles } from './styles';
 
 export function Guilds({ handleGuildSelect }: GuildsProps) {
@@ -20,7 +19,7 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
     } catch (error) {
       Alert.alert(
         'Servidores não carregadas',
-        'Seus servidores não foram carregados, verifique sua conexão com a internet.'
+        'Seus servidores não foram carregados, verifique sua conexão com a internet.',
       );
     } finally {
       setIsLoading(false);
@@ -29,14 +28,14 @@ export function Guilds({ handleGuildSelect }: GuildsProps) {
 
   const keyExtractor = useCallback(
     (item: CustomGuildProps) => item.id,
-    [guilds]
+    [guilds],
   );
 
   const renderItem = useCallback(
     ({ item }: RenderItem<CustomGuildProps>) => (
       <Guild {...item} onPress={() => handleGuildSelect(item)} />
     ),
-    [guilds]
+    [guilds],
   );
 
   useEffect(() => {

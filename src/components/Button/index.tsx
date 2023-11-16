@@ -1,10 +1,9 @@
+import { Else, If, Then } from 'react-if';
 import { ActivityIndicator, Text, TouchableOpacity } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { If, Then, Else } from 'react-if';
 
 import { ButtonProps } from '../../@types';
 import { theme } from '../../config';
-
 import { styles } from './styles';
 
 export function Button({ title, isLoading, disabled, ...rest }: ButtonProps) {

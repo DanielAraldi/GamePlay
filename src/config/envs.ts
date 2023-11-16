@@ -1,4 +1,4 @@
-import { REDIRECT_URI, CLIENT_ID, SCOPE } from '@env';
+import { CLIENT_ID, REDIRECT_URI, SCOPE } from '@env';
 
 export const env = {
   redirectUri: REDIRECT_URI || process.env.REDIRECT_URI,

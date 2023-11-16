@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react';
-import { FlatList, View, Text } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { If, Then, Else } from 'react-if';
+import { useCallback, useState } from 'react';
+import { Else, If, Then } from 'react-if';
+import { FlatList, Text, View } from 'react-native';
 
 import {
   Appointment,
@@ -10,11 +10,10 @@ import {
   CategorySelect,
   ListDivider,
   ListHeader,
-  Profile,
   Load,
+  Profile,
 } from '../../components';
 import { Storage } from '../../libs';
-
 import { styles } from './styles';
 
 export function Home() {
@@ -25,11 +24,11 @@ export function Home() {
   const [appoitments, setAppointments] = useState<CustomAppointmentProps[]>([]);
 
   function handleAppointmentDetails(
-    appointmentSelected: CustomAppointmentProps
+    appointmentSelected: CustomAppointmentProps,
   ): void {
     navigation.navigate(
       'AppointmentDetails' as never,
-      { appointment: appointmentSelected } as never
+      { appointment: appointmentSelected } as never,
     );
   }
 
@@ -42,14 +41,14 @@ export function Home() {
   }
 
   async function loadAppointments(): Promise<void> {
-    const storage = await Storage.get<CustomAppointmentProps[]>('appointments');
+    const storage = await Storage.getAvailableAppointments();
     const appoitmentStoraged = storage || [];
 
     if (category) {
       setAppointments(
         appoitmentStoraged.filter(
-          appoitment => appoitment.category === category
-        )
+          appoitment => appoitment.category === category,
+        ),
       );
     } else {
       setAppointments(appoitmentStoraged);
@@ -60,7 +59,7 @@ export function Home() {
 
   const keyExtractor = useCallback(
     (item: CustomAppointmentProps) => item.id,
-    [appoitments]
+    [appoitments],
   );
 
   const renderItem = useCallback(
@@ -71,13 +70,13 @@ export function Home() {
         {...item}
       />
     ),
-    [appoitments]
+    [appoitments],
   );
 
   useFocusEffect(
     useCallback(() => {
       loadAppointments();
-    }, [category])
+    }, [category]),
   );
 
   return (

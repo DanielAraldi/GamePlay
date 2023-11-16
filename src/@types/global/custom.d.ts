@@ -34,4 +34,5 @@ interface CustomAppointmentProps {
   category: string;
   date: string;
   description: string;
+  expiredIn: number;
 }

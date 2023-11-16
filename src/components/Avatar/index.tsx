@@ -1,8 +1,8 @@
-import { Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'react-native';
 
-import { theme } from '../../config';
 import { AvatarProps } from '../../@types';
+import { theme } from '../../config';
 import { styles } from './styles';
 
 export function Avatar({ urlImage }: AvatarProps) {

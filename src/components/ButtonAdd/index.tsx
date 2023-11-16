@@ -1,5 +1,5 @@
-import { TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { ButtonAddProps } from '../../@types';

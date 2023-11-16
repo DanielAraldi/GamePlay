@@ -1,36 +1,35 @@
-import { useCallback, useState, useEffect } from 'react';
-import {
-  FlatList,
-  TouchableOpacity,
-  ImageBackground,
-  Text,
-  View,
-  Alert,
-  Share,
-} from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
-import * as Linking from 'expo-linking';
 import { useRoute } from '@react-navigation/native';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { If, Then, Else, When } from 'react-if';
-
+import * as Linking from 'expo-linking';
+import { useCallback, useEffect, useState } from 'react';
+import { Else, If, Then, When } from 'react-if';
 import {
-  Background,
-  Header,
-  ListHeader,
-  Member,
-  ListDivider,
-  ButtonIcon,
-  Load,
-} from '../../components';
-import { theme, BANNER } from '../../config';
+  Alert,
+  FlatList,
+  ImageBackground,
+  Share,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+
 import {
   HomeParams,
   UserGuildWidgetProps,
   UserWidgetMembersProps,
 } from '../../@types';
+import {
+  Background,
+  ButtonIcon,
+  Header,
+  ListDivider,
+  ListHeader,
+  Load,
+  Member,
+} from '../../components';
+import { BANNER, theme } from '../../config';
 import { GuildService } from '../../services';
-
 import { styles } from './styles';
 
 export function AppointmentDetails() {
@@ -39,7 +38,7 @@ export function AppointmentDetails() {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [widget, setWidget] = useState<UserGuildWidgetProps>(
-    {} as UserGuildWidgetProps
+    {} as UserGuildWidgetProps,
   );
 
   const url = widget?.instant_invite || '';
@@ -68,7 +67,7 @@ export function AppointmentDetails() {
     } catch (error) {
       Alert.alert(
         'Seu widget não foi encontrado!',
-        'Certifique-se que as configurações widget do seu servidor está habilitada!'
+        'Certifique-se que as configurações widget do seu servidor está habilitada!',
       );
     } finally {
       setIsLoading(false);
@@ -77,14 +76,14 @@ export function AppointmentDetails() {
 
   const keyExtractor = useCallback(
     (item: UserWidgetMembersProps) => item.id,
-    [widget?.members]
+    [widget?.members],
   );
 
   const renderItem = useCallback(
     ({ item }: RenderItem<UserWidgetMembersProps>) => (
       <Member {...item} avatarUrl={item.avatar_url} />
     ),
-    [widget?.members]
+    [widget?.members],
   );
 
   useEffect(() => {

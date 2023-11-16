@@ -1,5 +1,5 @@
-import { DuelSvg, FunSvg, RankedSvg, TrainingSvg } from '../config';
 import { CategoriesProps } from '../@types';
+import { DuelSvg, FunSvg, RankedSvg, TrainingSvg } from '../config';
 
 export const CATEGORIES: CategoriesProps[] = [
   {

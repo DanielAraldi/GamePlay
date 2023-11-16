@@ -1,15 +1,14 @@
+import { When } from 'react-if';
 import {
   Modal,
-  View,
   TouchableWithoutFeedback,
   useWindowDimensions,
+  View,
 } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { When } from 'react-if';
 
 import { ModalViewProps } from '../../@types';
 import { Background } from '../Background';
-
 import { styles } from './styles';
 
 export function ModalView({
