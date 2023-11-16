@@ -4,6 +4,8 @@ import {
   Rajdhani_700Bold,
 } from '@expo-google-fonts/rajdhani';
 import { useFonts } from 'expo-font';
+import * as Notifications from 'expo-notifications';
+import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -19,6 +21,14 @@ export default function App() {
     Rajdhani_500Medium,
     Rajdhani_700Bold,
   });
+
+  useEffect(() => {
+    const subscriptions = Notifications.addNotificationResponseReceivedListener(
+      notification => console.log(notification),
+    );
+
+    return () => subscriptions.remove();
+  }, []);
 
   if (!fontsLoaded) return null;
 

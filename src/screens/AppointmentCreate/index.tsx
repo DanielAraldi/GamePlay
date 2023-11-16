@@ -1,5 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import * as Notifications from 'expo-notifications';
 import { useState } from 'react';
 import { Else, If, Then } from 'react-if';
 import {
@@ -77,7 +78,9 @@ export function AppointmentCreate() {
       const formattedMonth = formatNumbersOfDate(month);
       const formattedHour = formatNumbersOfDate(hour);
       const formattedMinute = formatNumbersOfDate(minute);
-      const year = getCurrentDate().getFullYear();
+
+      const currentDate = getCurrentDate();
+      const year = currentDate.getFullYear();
 
       const appointmentDate = new Date(
         `${year}-${formattedMonth}-${formattedDay}T${formattedHour}:${formattedMinute}:00.000Z`,
@@ -92,6 +95,20 @@ export function AppointmentCreate() {
         appointmentDate.setDate(expireOfDay),
       ).getTime();
 
+      const notificationId = await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Hora de jogar! 🥷',
+          body: `Hora de se juntar ao servidor ${guild.name}!`,
+          subtitle: 'Você tem uma partida agendada!',
+          sound: true,
+          priority: Notifications.AndroidNotificationPriority.HIGH,
+        },
+        trigger: {
+          date: expiredIn,
+          repeats: false,
+        },
+      });
+
       const newAppoitment: CustomAppointmentProps = {
         id: UUID.generate(),
         guild,
@@ -99,6 +116,7 @@ export function AppointmentCreate() {
         date: `${formattedDay}/${formattedMonth} às ${formattedHour}:${formattedMinute}h`,
         description,
         expiredIn,
+        notificationId,
       };
 
       const storage =
