@@ -27,8 +27,12 @@ This app was developed in **NLW Together**, the projet by [Rocketseat](https://w
 ## :rocket: Technologies
 
 - [Axios](https://github.com/axios/axios)
+- [Eslint](https://eslint.org/)
 - [Expo](https://expo.io/)
+- [Husky](https://typicode.github.io/husky/)
+- [Lint Staged](https://github.com/lint-staged/lint-staged)
 - [NPM](https://www.npmjs.com/)
+- [Prettier](https://prettier.io/)
 - [ReactJS](https://reactjs.org/)
 - [React Native](http://facebook.github.io/react-native/)
 - [React Native Async Storage](https://react-native-async-storage.github.io/async-storage/)
