@@ -1,6 +1,6 @@
 <h1 align="center">
   <img alt="GamePlay" src="./assets/adaptive-icon.png" width="160px" height="160px" />
-  <br>GamePLay<br/>
+  <br>GamePlay<br/>
   ReactJS | React Native | Expo | React Navigation
   <br/>
   <a href="https://wakatime.com/badge/user/920a7e43-2969-4212-82ff-1b375685ff58/project/2a382db3-f8fe-480e-be59-479ea5d4e06d">
