@@ -22,11 +22,11 @@
   <a href="#memo-licença">License</a>
 </p>
 
-## :bookmark: About hte Project
+## :bookmark: About the Project
 
 The **Gameplay** app is an app that helps you organize your games. It is integrated with [Discord API](https://discord.com/developers/docs/intro), allowing access to your Discord account to organize and create games.
 
-This app was developed in **NLW Together**, the projet by [Rocketseat](https://www.rocketseat.com.br/).
+This app was developed in **NLW Together**, the project by [Rocketseat](https://www.rocketseat.com.br/).
 
 ## :rocket: Technologies
 
