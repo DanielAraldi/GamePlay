@@ -67,7 +67,7 @@ This app was developed in **NLW Together**, the project by [Rocketseat](https://
   $ npm run start # yarn start to initialize app
 ```
 
-## :memo: Licença
+## :memo: License
 
 This project is sob MIT License. See on file [LICENSE](./LICENSE) for more details.
 
